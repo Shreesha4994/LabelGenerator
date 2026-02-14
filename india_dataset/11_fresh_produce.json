@@ -1,0 +1,33 @@
+{
+  "product_name": "Pre-washed Baby Spinach",
+  "category": "fresh_produce",
+  "veg_status": "veg",
+  "net_quantity": {
+    "value": 200,
+    "unit": "g"
+  },
+  "ingredients": [
+    {
+      "name": "Fresh Baby Spinach",
+      "percentage": 100
+    }
+  ],
+  "nutrition_per_100g": {
+    "energy_kcal": 23,
+    "protein": 2.9,
+    "carbohydrates": 3.6,
+    "fat": 0.4,
+    "fiber": 2.2,
+    "sodium": 0.08
+  },
+  "fssai_license": "10012345678911",
+  "manufacturer": {
+    "name": "Fresh Greens Farms Pvt Ltd",
+    "address": "Farm House 567, Okhla, New Delhi 110020, India"
+  },
+  "batch_number": "SP2026014",
+  "mfg_date": "2026-02-14",
+  "best_before_days": 5,
+  "mrp": 60.0,
+  "storage_instructions": "Keep refrigerated at 4\u00b0C or below. Consume within 5 days of opening"
+}

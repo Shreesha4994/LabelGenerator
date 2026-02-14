@@ -1,0 +1,34 @@
+{
+  "product_name": "Fresh Chicken Breast",
+  "category": "meat_fish_egg",
+  "veg_status": "non-veg",
+  "net_quantity": {
+    "value": 500,
+    "unit": "g"
+  },
+  "ingredients": [
+    {
+      "name": "Fresh Chicken Breast",
+      "percentage": 100
+    }
+  ],
+  "nutrition_per_100g": {
+    "energy_kcal": 165,
+    "protein": 31,
+    "carbohydrates": 0,
+    "fat": 3.6,
+    "saturated_fat": 1,
+    "sodium": 0.07
+  },
+  "fssai_license": "10012345678904",
+  "manufacturer": {
+    "name": "Fresh Poultry Farms Ltd",
+    "address": "Khasra No. 456, Village Bahadurgarh, Haryana 124507, India"
+  },
+  "batch_number": "CB2026014",
+  "mfg_date": "2026-02-14",
+  "best_before_days": 2,
+  "mrp": 250.0,
+  "storage_temperature": "Store below 4\u00b0C",
+  "storage_instructions": "Keep refrigerated. Cook thoroughly before consumption"
+}

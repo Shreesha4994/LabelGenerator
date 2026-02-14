@@ -1,0 +1,81 @@
+{
+  "product_name": "Organic Hazelnut Energy Bar",
+  "category": "packaged_food",
+  "net_quantity": {
+    "value": 50,
+    "unit": "g"
+  },
+  "nutrition_per_100g": {
+    "energy_kj": 2010,
+    "energy_kcal": 480,
+    "fat": 28,
+    "saturates": 5.0,
+    "carbohydrate": 44,
+    "sugars": 20,
+    "protein": 16,
+    "salt": 0.28,
+    "fibre": 6.0
+  },
+  "ingredients": [
+    {
+      "name": "Organic HAZELNUTS",
+      "percentage": 35,
+      "is_allergen": true
+    },
+    {
+      "name": "Organic Dates",
+      "percentage": 25
+    },
+    {
+      "name": "Organic Dark Chocolate",
+      "percentage": 15
+    },
+    {
+      "name": "Organic OAT Flakes",
+      "percentage": 12,
+      "is_allergen": true
+    },
+    {
+      "name": "Organic Agave Syrup",
+      "percentage": 8
+    },
+    {
+      "name": "Emulsifier",
+      "e_number": "E322",
+      "functional_class": "Emulsifier",
+      "source": "sunflower lecithin"
+    },
+    {
+      "name": "Sea Salt"
+    },
+    {
+      "name": "Natural Vanilla Extract"
+    }
+  ],
+  "allergens": [
+    "tree nuts (hazelnuts)",
+    "gluten (oats)"
+  ],
+  "date_type": "best_before",
+  "best_before": "2026-12-31",
+  "storage_conditions": "Store in a cool, dry place away from direct sunlight. Once opened, consume within 3 days.",
+  "business_operator": {
+    "name": "Europa Naturals SAS",
+    "address": "45 Rue de la Santé, 75014 Paris, France",
+    "phone": "+33 1 45 67 89 00",
+    "website": "www.europanaturals.eu"
+  },
+  "is_organic": true,
+  "organic_percentage": 98,
+  "organic_certification": "FR-BIO-01",
+  "organic_origin": "EU Agriculture",
+  "country_of_origin": "France",
+  "lot_number": "EU2026014",
+  "ean_code": "5 412345 678901",
+  "brand_name": "EUROPA NATURALS",
+  "brand_tagline": "Produit en France • EU Certified",
+  "product_description": "Organic Hazelnut Bar",
+  "product_variant": "Chocolate & Hazelnut",
+  "product_type": "ENERGY BAR",
+  "product_emoji": "🌿"
+}

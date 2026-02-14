@@ -1,0 +1,19 @@
+# Flask API Requirements
+# Food Label Generator API Service
+
+# Core Flask
+Flask==3.0.0
+Werkzeug==3.0.1
+
+# CORS support
+Flask-CORS==4.0.0
+
+# Template engine (already required by label generators)
+Jinja2==3.1.3
+MarkupSafe==2.1.3
+
+# Production WSGI server (optional, for deployment)
+gunicorn==21.2.0
+
+# Environment variable management (optional)
+python-dotenv==1.0.0

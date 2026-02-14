@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US FDA Compliant Food Label</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .label-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* FRONT LABEL */
+        .front-label {
+            width: 420px;
+            height: 650px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            position: relative;
+        }
+
+        .country-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #003366;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-stripe {
+            height: 100px;
+            background: linear-gradient(135deg, #dc143c 0%, #b91c1c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .header-stripe::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #003366;
+        }
+
+        .brand-section {
+            text-align: center;
+            padding: 25px 30px;
+        }
+
+        .brand-name {
+            font-size: 48px;
+            font-weight: 900;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Impact', sans-serif;
+        }
+
+        .brand-tagline {
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .product-hero {
+            height: 220px;
+            margin: 20px 30px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ff6b6b 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-hero::before {
+            content: '🥜';
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.2;
+            transform: rotate(-15deg);
+        }
+
+        .product-title {
+            text-align: center;
+            z-index: 1;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-title h1 {
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .product-subtitle {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .product-description {
+            text-align: center;
+            padding: 20px 40px;
+        }
+
+        .product-description h2 {
+            font-size: 28px;
+            color: #2c3e50;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .flavor-text {
+            font-size: 18px;
+            color: #e67e22;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .certifications-front {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px;
+        }
+
+        .cert-badge-front {
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .cert-usda {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            border: 2px solid #229954;
+        }
+
+        .cert-nongmo {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: 2px solid #21618c;
+        }
+
+        .cert-kosher {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            border: 2px solid #7d3c98;
+        }
+
+        .net-content {
+            text-align: center;
+            padding: 18px;
+            background: white;
+            margin: 0 30px 25px;
+            border: 3px solid #003366;
+            border-radius: 10px;
+        }
+
+        .net-content-label {
+            font-size: 13px;
+            color: #666;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .net-content-value {
+            font-size: 28px;
+            color: #003366;
+            font-weight: 900;
+            margin-top: 5px;
+        }
+
+        /* BACK LABEL */
+        .back-label {
+            width: 420px;
+            height: 650px;
+            background: white;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .back-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #003366;
+        }
+
+        .back-header h3 {
+            font-size: 24px;
+            color: #003366;
+            font-weight: 900;
+        }
+
+        /* FDA Nutrition Facts */
+        .nutrition-facts-fda {
+            border: 3px solid #000;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .nf-title {
+            font-size: 40px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .nf-servings {
+            border-top: 12px solid #000;
+            border-bottom: 5px solid #000;
+            padding: 8px 0;
+            font-size: 13px;
+        }
+
+        .nf-serving-size {
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .nf-calories {
+            border-bottom: 8px solid #000;
+            padding: 8px 0;
+        }
+
+        .nf-calories-label {
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .nf-calories-amount {
+            font-size: 36px;
+            font-weight: 900;
+        }
+
+        .nf-dv-header {
+            text-align: right;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 0;
+            border-bottom: 5px solid #000;
+        }
+
+        .nf-nutrient {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #000;
+            font-size: 13px;
+        }
+
+        .nf-nutrient.major {
+            font-weight: 700;
+        }
+
+        .nf-nutrient.indent {
+            padding-left: 20px;
+            font-weight: 400;
+        }
+
+        .nf-nutrient.indent2 {
+            padding-left: 40px;
+            font-weight: 400;
+        }
+
+        .nf-nutrient.thick {
+            border-bottom: 8px solid #000;
+        }
+
+        .nf-nutrient.medium {
+            border-bottom: 5px solid #000;
+        }
+
+        .nf-dv-value {
+            font-weight: 700;
+        }
+
+        .nf-footnote {
+            font-size: 10px;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+
+        .ingredients-section {
+            margin-bottom: 18px;
+        }
+
+        .section-header {
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .ingredients-list {
+            font-size: 11px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .allergen-statement {
+            background: #fff3cd;
+            border: 3px solid #ffc107;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 18px;
+        }
+
+        .allergen-statement .section-header {
+            color: #856404;
+            margin-bottom: 6px;
+        }
+
+        .allergen-text {
+            font-size: 11px;
+            font-weight: 700;
+            color: #856404;
+            line-height: 1.5;
+        }
+
+        .upc-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .upc-barcode {
+            height: 70px;
+            background: repeating-linear-gradient(
+                90deg,
+                #000 0px, #000 2px,
+                #fff 2px, #fff 4px,
+                #000 4px, #000 6px,
+                #fff 6px, #fff 7px,
+                #000 7px, #000 10px,
+                #fff 10px, #fff 12px,
+                #000 12px, #000 13px,
+                #fff 13px, #fff 16px
+            );
+            border: 2px solid #000;
+            margin: 0 auto 8px;
+            width: 250px;
+        }
+
+        .upc-number {
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+
+        .manufacturer-info {
+            font-size: 10px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .manufacturer-info strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #666;
+            padding-top: 12px;
+            border-top: 2px solid #ddd;
+        }
+
+        .footer-info div {
+            font-weight: 700;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .label-container {
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- FRONT LABEL - USA -->
+    <div class="label-container">
+        <div class="front-label">
+            <div class="country-badge">🇺🇸 USA</div>
+            
+            <div class="header-stripe">
+                <div style="color: white; font-size: 18px; font-weight: 900; letter-spacing: 3px;">PREMIUM QUALITY</div>
+            </div>
+
+            <div class="brand-section">
+                <div class="brand-name">AMERICAN<br>HARVEST</div>
+                <div class="brand-tagline">Since 1985 • Made in USA</div>
+            </div>
+
+            <div class="product-hero">
+                <div class="product-title">
+                    <h1>PEANUT</h1>
+                    <div class="product-subtitle">BUTTER BAR</div>
+                </div>
+            </div>
+
+            <div class="product-description">
+                <h2>Crunchy Peanut Butter</h2>
+                <div class="flavor-text">Classic American Taste</div>
+            </div>
+
+            <div class="certifications-front">
+                <div class="cert-badge-front cert-usda">✓ USDA Organic</div>
+                <div class="cert-badge-front cert-nongmo">Non-GMO</div>
+                <div class="cert-badge-front cert-kosher">Kosher</div>
+            </div>
+
+            <div class="net-content">
+                <div class="net-content-label">Net Weight</div>
+                <div class="net-content-value">1.76 oz (50g)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BACK LABEL - USA -->
+    <div class="label-container">
+        <div class="back-label">
+            <div class="back-header">
+                <h3>NUTRITION & INGREDIENTS</h3>
+            </div>
+
+            <!-- FDA Nutrition Facts Label -->
+            <div class="nutrition-facts-fda">
+                <div class="nf-title">Nutrition Facts</div>
+                <div class="nf-servings">
+                    <div class="nf-serving-size">Serving size 1 bar (50g)</div>
+                    <div>Servings per container 1</div>
+                </div>
+                <div class="nf-calories">
+                    <span class="nf-calories-label">Amount per serving</span><br>
+                    <span class="nf-calories-label">Calories</span>
+                    <span class="nf-calories-amount">240</span>
+                </div>
+                <div class="nf-dv-header">% Daily Value*</div>
+                
+                <div class="nf-nutrient major">
+                    <span>Total Fat 14g</span>
+                    <span class="nf-dv-value">18%</span>
+                </div>
+                <div class="nf-nutrient indent">
+                    <span>Saturated Fat 2.5g</span>
+                    <span class="nf-dv-value">13%</span>
+                </div>
+                <div class="nf-nutrient indent">
+                    <span><i>Trans</i> Fat 0g</span>
+                    <span></span>
+                </div>
+                <div class="nf-nutrient major">
+                    <span>Cholesterol 0mg</span>
+                    <span class="nf-dv-value">0%</span>
+                </div>
+                <div class="nf-nutrient major">
+                    <span>Sodium 140mg</span>
+                    <span class="nf-dv-value">6%</span>
+                </div>
+                <div class="nf-nutrient major">
+                    <span>Total Carbohydrate 22g</span>
+                    <span class="nf-dv-value">8%</span>
+                </div>
+                <div class="nf-nutrient indent">
+                    <span>Dietary Fiber 3g</span>
+                    <span class="nf-dv-value">11%</span>
+                </div>
+                <div class="nf-nutrient indent">
+                    <span>Total Sugars 10g</span>
+                    <span></span>
+                </div>
+                <div class="nf-nutrient indent2 medium">
+                    <span>Includes 7g Added Sugars</span>
+                    <span class="nf-dv-value">14%</span>
+                </div>
+                <div class="nf-nutrient major thick">
+                    <span>Protein 8g</span>
+                    <span></span>
+                </div>
+                
+                <div class="nf-nutrient">
+                    <span>Vitamin D 0mcg</span>
+                    <span>0%</span>
+                </div>
+                <div class="nf-nutrient">
+                    <span>Calcium 30mg</span>
+                    <span>2%</span>
+                </div>
+                <div class="nf-nutrient">
+                    <span>Iron 1.2mg</span>
+                    <span>6%</span>
+                </div>
+                <div class="nf-nutrient thick">
+                    <span>Potassium 200mg</span>
+                    <span>4%</span>
+                </div>
+                
+                <div class="nf-footnote">
+                    * The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.
+                </div>
+            </div>
+
+            <div class="ingredients-section">
+                <div class="section-header">Ingredients:</div>
+                <div class="ingredients-list">
+                    Organic Peanuts, Organic Honey, Organic Rolled Oats, Organic Brown Rice Syrup, Organic Peanut Butter (Organic Peanuts, Salt), Organic Sunflower Oil, Organic Puffed Rice, Sea Salt, Natural Vanilla Extract, Vitamin E (Mixed Tocopherols).
+                </div>
+            </div>
+
+            <div class="allergen-statement">
+                <div class="section-header">Contains:</div>
+                <div class="allergen-text">
+                    PEANUTS. May contain traces of tree nuts, soy, milk, and wheat. Manufactured in a facility that processes peanuts and tree nuts.
+                </div>
+            </div>
+
+            <div class="upc-section">
+                <div class="upc-barcode"></div>
+                <div class="upc-number">0 12345 67890 5</div>
+            </div>
+
+            <div class="manufacturer-info">
+                <strong>Distributed by:</strong>
+                American Harvest Foods LLC<br>
+                1776 Liberty Avenue, Suite 200<br>
+                Boston, MA 02101, USA<br>
+                Tel: 1-800-555-FOOD (3663)<br>
+                www.americanharvestfoods.com<br>
+                <br>
+                <strong>Storage:</strong> Store in a cool, dry place. Refrigerate after opening.
+            </div>
+
+            <div class="footer-info">
+                <div>BEST BY: SEE TOP</div>
+                <div>LOT: 2026US014</div>
+                <div>Made in USA 🇺🇸</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

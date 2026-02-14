@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product_name }} - FSSAI Compliant Label</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: linear-gradient(135deg, #ff9933 0%, #ffffff 50%, #138808 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .label-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* FRONT LABEL */
+        .front-label {
+            width: 420px;
+            height: 650px;
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);
+            position: relative;
+        }
+
+        .country-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #ff9933 0%, #138808 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* MANDATORY: Veg/Non-Veg Symbol */
+        .veg-symbol {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 45px;
+            height: 45px;
+            border: 3px solid {% if veg_status == 'veg' %}#138808{% else %}#8B4513{% endif %};
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .veg-dot {
+            width: 20px;
+            height: 20px;
+            background: {% if veg_status == 'veg' %}#138808{% else %}#8B4513{% endif %};
+            border-radius: 50%;
+        }
+
+        .header-banner {
+            height: 95px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 4px solid #138808;
+        }
+
+        .brand-container {
+            text-align: center;
+            padding: 25px 30px;
+        }
+
+        .brand-title {
+            font-size: 44px;
+            font-weight: 900;
+            color: #d35400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        .brand-subtitle {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .product-showcase {
+            height: 210px;
+            margin: 20px 30px;
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 50%, #d35400 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #138808;
+        }
+
+        .product-showcase::before {
+            content: '{{ product_emoji|default("🌾") }}';
+            position: absolute;
+            font-size: 110px;
+            opacity: 0.2;
+            transform: rotate(-15deg);
+        }
+
+        .product-main-title {
+            text-align: center;
+            z-index: 1;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .product-main-title h1 {
+            font-size: 50px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .product-category {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .product-info {
+            text-align: center;
+            padding: 20px 35px;
+        }
+
+        .product-info h2 {
+            font-size: 26px;
+            color: #d35400;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .product-flavor {
+            font-size: 17px;
+            color: #e67e22;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .india-certifications {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px;
+            flex-wrap: wrap;
+        }
+
+        .india-cert-badge {
+            padding: 9px 16px;
+            border-radius: 22px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .cert-fssai {
+            background: linear-gradient(135deg, #138808 0%, #0d5e06 100%);
+            color: white;
+            border: 2px solid #0a4604;
+        }
+
+        .cert-organic {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            border: 2px solid #1e8449;
+        }
+
+        .cert-fortified {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: 2px solid #a93226;
+        }
+
+        /* MANDATORY: Net Quantity and MRP */
+        .net-weight-mrp {
+            margin: 0 30px 20px;
+        }
+
+        .net-weight-box {
+            text-align: center;
+            padding: 14px;
+            background: white;
+            border: 3px solid #d35400;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .net-weight-label {
+            font-size: 12px;
+            color: #7f8c8d;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .net-weight-amount {
+            font-size: 26px;
+            color: #d35400;
+            font-weight: 900;
+            margin-top: 5px;
+        }
+
+        .mrp-box {
+            text-align: center;
+            padding: 14px;
+            background: #138808;
+            color: white;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .mrp-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mrp-amount {
+            font-size: 28px;
+            font-weight: 900;
+            margin-top: 3px;
+        }
+
+        /* BACK LABEL */
+        .back-label {
+            width: 420px;
+            height: 650px;
+            background: white;
+            padding: 28px;
+            overflow-y: auto;
+        }
+
+        .back-title-section {
+            text-align: center;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #d35400;
+        }
+
+        .back-title-section h3 {
+            font-size: 22px;
+            color: #d35400;
+            font-weight: 900;
+        }
+
+        /* MANDATORY: Nutrition Information */
+        .nutrition-info-fssai {
+            border: 2px solid #d35400;
+            padding: 12px;
+            margin-bottom: 18px;
+        }
+
+        .nutrition-title-fssai {
+            font-size: 16px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            color: #d35400;
+        }
+
+        .nutrition-subtitle-fssai {
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #d35400;
+        }
+
+        .nutrition-table-fssai {
+            width: 100%;
+            font-size: 11px;
+        }
+
+        .nutrition-table-fssai td {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .nutrition-table-fssai tr:last-child td {
+            border-bottom: 2px solid #d35400;
+        }
+
+        .nutrition-table-fssai .nutrient-name {
+            font-weight: 700;
+        }
+
+        .nutrition-table-fssai .value-column {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        /* MANDATORY: Ingredients */
+        .ingredients-block {
+            margin-bottom: 16px;
+        }
+
+        .block-title {
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #d35400;
+            margin-bottom: 7px;
+            letter-spacing: 0.5px;
+        }
+
+        .ingredients-text {
+            font-size: 10px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* MANDATORY: Allergen Information */
+        .allergen-india {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 16px;
+        }
+
+        .allergen-india .block-title {
+            color: #856404;
+            margin-bottom: 5px;
+        }
+
+        .allergen-india-text {
+            font-size: 10px;
+            font-weight: 700;
+            color: #856404;
+            line-height: 1.5;
+        }
+
+        /* MANDATORY: FSSAI License */
+        .fssai-license {
+            background: #e8f5e9;
+            border: 3px solid #138808;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .fssai-logo {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .fssai-license-text {
+            font-size: 10px;
+            font-weight: 700;
+            color: #138808;
+            line-height: 1.4;
+        }
+
+        .fssai-number {
+            font-size: 14px;
+            font-weight: 900;
+            color: #138808;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .barcode-india {
+            text-align: center;
+            margin: 18px 0;
+        }
+
+        .barcode-india-graphic {
+            height: 65px;
+            background: repeating-linear-gradient(
+                90deg,
+                #000 0px, #000 2px,
+                #fff 2px, #fff 4px,
+                #000 4px, #000 5px,
+                #fff 5px, #fff 8px,
+                #000 8px, #000 10px,
+                #fff 10px, #fff 11px,
+                #000 11px, #000 14px,
+                #fff 14px, #fff 16px
+            );
+            border: 2px solid #000;
+            margin: 0 auto 6px;
+            width: 240px;
+        }
+
+        .barcode-india-number {
+            font-size: 13px;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        /* MANDATORY: Manufacturer Details */
+        .manufacturer-details {
+            font-size: 9px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 14px;
+        }
+
+        .manufacturer-details strong {
+            display: block;
+            margin-bottom: 3px;
+            color: #d35400;
+        }
+
+        .customer-care {
+            background: #f8f9fa;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        .customer-care-title {
+            font-size: 11px;
+            font-weight: 900;
+            color: #d35400;
+            margin-bottom: 5px;
+        }
+
+        .customer-care-info {
+            font-size: 10px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Category-specific sections */
+        .category-specific {
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 16px;
+        }
+
+        .category-specific .block-title {
+            color: #1565c0;
+        }
+
+        .category-specific-text {
+            font-size: 10px;
+            font-weight: 700;
+            color: #1565c0;
+            line-height: 1.5;
+        }
+
+        /* MANDATORY: Date Marking */
+        .footer-india {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            color: #666;
+            padding-top: 10px;
+            border-top: 2px solid #ddd;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer-india div {
+            font-weight: 700;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .label-container {
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- FRONT LABEL - INDIA -->
+    <div class="label-container">
+        <div class="front-label">
+            <div class="country-badge">🇮🇳 INDIA</div>
+            
+            <!-- MANDATORY: Veg/Non-Veg Symbol -->
+            <div class="veg-symbol">
+                <div class="veg-dot"></div>
+            </div>
+            
+            <div class="header-banner">
+                <div style="color: white; font-size: 17px; font-weight: 900; letter-spacing: 2px;">
+                    {{ brand_tagline|default("PREMIUM INDIAN QUALITY") }}
+                </div>
+            </div>
+
+            <div class="brand-container">
+                <div class="brand-title">{{ brand_name|default(manufacturer.name.split()[0])|upper }}</div>
+                <div class="brand-subtitle">{{ brand_subtitle|default("Pure & Natural • Made in India") }}</div>
+            </div>
+
+            <div class="product-showcase">
+                <div class="product-main-title">
+                    <h1>{{ product_name|upper }}</h1>
+                    <div class="product-category">{{ product_type|default("ENERGY BAR")|upper }}</div>
+                </div>
+            </div>
+
+            <div class="product-info">
+                <h2>{{ product_description|default(product_name) }}</h2>
+                <div class="product-flavor">{{ product_variant|default("") }}</div>
+            </div>
+
+            <div class="india-certifications">
+                <div class="india-cert-badge cert-fssai">✓ FSSAI Approved</div>
+                {% if show_organic_logo %}
+                <div class="india-cert-badge cert-organic">🌿 Organic India</div>
+                {% endif %}
+                {% if show_fortified_logo %}
+                <div class="india-cert-badge cert-fortified">+F Fortified</div>
+                {% endif %}
+            </div>
+
+            <!-- MANDATORY: Net Quantity and MRP -->
+            <div class="net-weight-mrp">
+                <div class="net-weight-box">
+                    <div class="net-weight-label">Net Weight</div>
+                    <div class="net-weight-amount">{{ net_quantity.value }}{{ net_quantity.unit }}</div>
+                </div>
+                <div class="mrp-box">
+                    <div class="mrp-label">MRP (Incl. of all taxes)</div>
+                    <div class="mrp-amount">₹{{ "%.2f"|format(mrp) }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BACK LABEL - INDIA -->
+    <div class="label-container">
+        <div class="back-label">
+            <div class="back-title-section">
+                <h3>NUTRITIONAL INFORMATION</h3>
+            </div>
+
+            <!-- MANDATORY: Nutrition Information per 100g/100ml -->
+            <div class="nutrition-info-fssai">
+                <div class="nutrition-title-fssai">Nutritional Information</div>
+                <div class="nutrition-subtitle-fssai">Approximate values per 100{{ net_quantity.unit[0] }}:</div>
+                
+                <table class="nutrition-table-fssai">
+                    <tbody>
+                        <tr>
+                            <td class="nutrient-name">Energy</td>
+                            <td class="value-column">{{ nutrition_per_100g.energy_kcal }} kcal</td>
+                        </tr>
+                        <tr>
+                            <td class="nutrient-name">Protein</td>
+                            <td class="value-column">{{ nutrition_per_100g.protein }}g</td>
+                        </tr>
+                        <tr>
+                            <td class="nutrient-name">Carbohydrate</td>
+                            <td class="value-column">{{ nutrition_per_100g.carbohydrates }}g</td>
+                        </tr>
+                        {% if nutrition_per_100g.sugars is defined %}
+                        <tr>
+                            <td style="padding-left: 15px;">Total Sugars</td>
+                            <td class="value-column">{{ nutrition_per_100g.sugars }}g</td>
+                        </tr>
+                        {% endif %}
+                        <tr>
+                            <td class="nutrient-name">Total Fat</td>
+                            <td class="value-column">{{ nutrition_per_100g.fat }}g</td>
+                        </tr>
+                        {% if nutrition_per_100g.saturated_fat is defined %}
+                        <tr>
+                            <td style="padding-left: 15px;">Saturated Fat</td>
+                            <td class="value-column">{{ nutrition_per_100g.saturated_fat }}g</td>
+                        </tr>
+                        {% endif %}
+                        {% if nutrition_per_100g.trans_fat is defined %}
+                        <tr>
+                            <td style="padding-left: 15px;">Trans Fat</td>
+                            <td class="value-column">{{ nutrition_per_100g.trans_fat }}g</td>
+                        </tr>
+                        {% endif %}
+                        {% if nutrition_per_100g.fiber is defined %}
+                        <tr>
+                            <td class="nutrient-name">Dietary Fibre</td>
+                            <td class="value-column">{{ nutrition_per_100g.fiber }}g</td>
+                        </tr>
+                        {% endif %}
+                        {% if nutrition_per_100g.sodium is defined %}
+                        <tr>
+                            <td class="nutrient-name">Sodium</td>
+                            <td class="value-column">{{ nutrition_per_100g.sodium }}mg</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- MANDATORY: Ingredients List (descending order by weight) -->
+            <div class="ingredients-block">
+                <div class="block-title">Ingredients:</div>
+                <div class="ingredients-text">
+                    {{ ingredients_formatted }}
+                </div>
+            </div>
+
+            <!-- MANDATORY: Allergen Information -->
+            {% if allergens %}
+            <div class="allergen-india">
+                <div class="block-title">Allergen Information:</div>
+                <div class="allergen-india-text">
+                    Contains: {{ allergens_formatted }}. {% if allergen_warning %}{{ allergen_warning }}{% else %}May contain traces of other allergens.{% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Category-Specific Information -->
+            {% if show_fat_percentage %}
+            <div class="category-specific">
+                <div class="block-title">Dairy Information:</div>
+                <div class="category-specific-text">
+                    Fat Content: {{ fat_percentage }}%<br>
+                    {% if milk_source %}Milk Source: {{ milk_source }}{% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if show_fruit_percentage %}
+            <div class="category-specific">
+                <div class="block-title">Fruit Content:</div>
+                <div class="category-specific-text">
+                    Contains {{ fruit_percentage }}% fruit juice
+                </div>
+            </div>
+            {% endif %}
+
+            {% if show_caffeine_warning %}
+            <div class="category-specific">
+                <div class="block-title">⚠️ Warning:</div>
+                <div class="category-specific-text">
+                    Contains caffeine. Not recommended for children and pregnant women.
+                </div>
+            </div>
+            {% endif %}
+
+            {% if show_fortified_logo %}
+            <div class="category-specific">
+                <div class="block-title">+F Fortification Details:</div>
+                <div class="category-specific-text">
+                    {{ fortification_details }}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if show_country_of_origin %}
+            <div class="category-specific">
+                <div class="block-title">Country of Origin:</div>
+                <div class="category-specific-text">
+                    {{ country_of_origin }}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- MANDATORY: FSSAI License Number -->
+            <div class="fssai-license">
+                <div class="fssai-logo">🛡️</div>
+                <div class="fssai-license-text">
+                    FSSAI License No.
+                </div>
+                <div class="fssai-number">{{ fssai_license_formatted }}</div>
+            </div>
+
+            <!-- Storage Instructions -->
+            <div class="ingredients-block">
+                <div class="block-title">Storage Instructions:</div>
+                <div class="ingredients-text">
+                    {{ storage_instructions|default("Store in a cool, dry and hygienic place. Keep away from direct sunlight.") }}
+                    {% if show_storage_temp %} Store at {{ storage_temperature|default("-18°C or below") }}.{% endif %}
+                    {% if show_thawing_instructions %} {{ thawing_instructions }}{% endif %}
+                </div>
+            </div>
+
+            <div class="barcode-india">
+                <div class="barcode-india-graphic"></div>
+                <div class="barcode-india-number">{{ barcode|default("8 901234 567890") }}</div>
+            </div>
+
+            <!-- MANDATORY: Manufacturer/Packer Details -->
+            <div class="manufacturer-details">
+                <strong>Manufactured & Packed by:</strong>
+                {{ manufacturer.name }}<br>
+                {{ manufacturer.address }}<br>
+                {% if manufacturer.phone %}<br>Tel: {{ manufacturer.phone }}{% endif %}
+                {% if manufacturer.email %}<br>Email: {{ manufacturer.email }}{% endif %}
+                <br>
+                {% if show_importer_details and importer %}
+                <strong>Imported by:</strong>
+                {{ importer.name }}<br>
+                {{ importer.address }}<br>
+                {% endif %}
+                <strong>Country of Origin:</strong> {{ country_of_origin|default("India") }}<br>
+                {% if marketer %}
+                <strong>Marketed by:</strong> {{ marketer }}
+                {% endif %}
+            </div>
+
+            {% if customer_care %}
+            <div class="customer-care">
+                <div class="customer-care-title">Customer Care</div>
+                <div class="customer-care-info">
+                    {% if customer_care.phone %}📞 {{ customer_care.phone }}<br>{% endif %}
+                    {% if customer_care.email %}📧 {{ customer_care.email }}<br>{% endif %}
+                    {% if customer_care.website %}🌐 {{ customer_care.website }}{% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- MANDATORY: Date Marking and Batch Number -->
+            <div class="footer-india">
+                <div>Best Before: {% if best_before_date %}{{ best_before_date }}{% else %}{{ best_before_months }} Months from MFG{% endif %}</div>
+                <div>MFG Date: {{ mfg_date_display }}</div>
+                <div>Batch No: {{ batch_number }}</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

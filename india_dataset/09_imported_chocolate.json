@@ -1,0 +1,54 @@
+{
+  "product_name": "Swiss Dark Chocolate",
+  "category": "imported",
+  "veg_status": "veg",
+  "net_quantity": {
+    "value": 100,
+    "unit": "g"
+  },
+  "ingredients": [
+    {
+      "name": "Cocoa Mass",
+      "percentage": 70
+    },
+    {
+      "name": "Sugar",
+      "percentage": 28
+    },
+    {
+      "name": "Cocoa Butter",
+      "percentage": 1.5
+    },
+    {
+      "name": "Emulsifier (Soy Lecithin)",
+      "ins_number": "322",
+      "percentage": 0.5
+    }
+  ],
+  "allergens": [
+    "soy"
+  ],
+  "nutrition_per_100g": {
+    "energy_kcal": 550,
+    "protein": 8,
+    "carbohydrates": 35,
+    "fat": 42,
+    "saturated_fat": 25,
+    "sugar": 28,
+    "sodium": 0.01
+  },
+  "fssai_license": "10012345678909",
+  "manufacturer": {
+    "name": "Swiss Chocolates SA",
+    "address": "Zurich, Switzerland"
+  },
+  "importer_name": "Premium Imports India Pvt Ltd",
+  "importer_address": "Import House, Connaught Place, New Delhi 110001, India",
+  "batch_number": "SC2026014",
+  "mfg_date": "2026-01-15",
+  "best_before_months": 18,
+  "mrp": 450.0,
+  "is_imported": true,
+  "country_of_origin": "Switzerland",
+  "storage_instructions": "Store in a cool, dry place below 20\u00b0C"
+}

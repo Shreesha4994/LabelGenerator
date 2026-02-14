@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product_name }} - EU Regulation 1169/2011 Compliant Label</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #003399 0%, #0066cc 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .label-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* FRONT LABEL */
+        .front-label {
+            width: 420px;
+            height: 650px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            position: relative;
+        }
+
+        .eu-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #003399;
+            color: #ffcc00;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid #ffcc00;
+        }
+
+        {% if show_eu_organic_logo %}
+        .eu-organic-seal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 70px;
+            height: 70px;
+            background: #00a651;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 9px;
+            font-weight: 900;
+            text-align: center;
+            line-height: 1.2;
+            padding: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .eu-organic-seal .leaf {
+            font-size: 28px;
+            margin-bottom: 3px;
+        }
+
+        .eu-organic-seal .cert-code {
+            font-size: 7px;
+            margin-top: 3px;
+            opacity: 0.9;
+        }
+        {% endif %}
+
+        .header-stripe {
+            height: 100px;
+            background: linear-gradient(135deg, #00a651 0%, #008c44 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .header-stripe::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #003399;
+        }
+
+        .brand-section {
+            text-align: center;
+            padding: 25px 30px;
+        }
+
+        .brand-name {
+            font-size: 48px;
+            font-weight: 900;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Impact', sans-serif;
+        }
+
+        .brand-tagline {
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .product-hero {
+            height: 220px;
+            margin: 20px 30px;
+            background: linear-gradient(135deg, #00a651 0%, #66cc99 50%, #ffcc00 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-hero::before {
+            content: '{{ product_emoji|default("🌿") }}';
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.2;
+            transform: rotate(-15deg);
+        }
+
+        .product-title {
+            text-align: center;
+            z-index: 1;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-title h1 {
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .product-subtitle {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .product-description {
+            text-align: center;
+            padding: 20px 40px;
+        }
+
+        .product-description h2 {
+            font-size: 28px;
+            color: #2c3e50;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .flavor-text {
+            font-size: 18px;
+            color: #00a651;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .net-content {
+            text-align: center;
+            padding: 18px;
+            background: white;
+            margin: 0 30px 25px;
+            border: 3px solid #003399;
+            border-radius: 10px;
+        }
+
+        .net-content-label {
+            font-size: 13px;
+            color: #666;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .net-content-value {
+            font-size: 28px;
+            color: #003399;
+            font-weight: 900;
+            margin-top: 5px;
+        }
+
+        /* BACK LABEL */
+        .back-label {
+            width: 420px;
+            height: 650px;
+            background: white;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .back-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #003399;
+        }
+
+        .back-header h3 {
+            font-size: 24px;
+            color: #003399;
+            font-weight: 900;
+        }
+
+        /* EU Nutrition Declaration */
+        .nutrition-declaration-eu {
+            border: 2px solid #000;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .nd-title {
+            font-size: 18px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .nd-subtitle {
+            font-size: 11px;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #000;
+        }
+
+        .nd-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #ccc;
+            font-size: 12px;
+        }
+
+        .nd-row.header {
+            font-weight: 700;
+            border-bottom: 2px solid #000;
+            margin-bottom: 5px;
+        }
+
+        .nd-row.major {
+            font-weight: 700;
+        }
+
+        .nd-row.indent {
+            padding-left: 15px;
+        }
+
+        .nd-row.thick {
+            border-bottom: 2px solid #000;
+            margin-top: 5px;
+        }
+
+        .ingredients-section {
+            margin-bottom: 18px;
+        }
+
+        .section-header {
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .ingredients-list {
+            font-size: 11px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .allergen-box {
+            background: #fff3cd;
+            border: 3px solid #ffc107;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 18px;
+        }
+
+        .allergen-box .section-header {
+            color: #856404;
+            margin-bottom: 6px;
+        }
+
+        .allergen-text {
+            font-size: 11px;
+            font-weight: 700;
+            color: #856404;
+            line-height: 1.5;
+        }
+
+        {% if show_eu_organic_logo %}
+        .organic-info {
+            background: #e8f5e9;
+            border: 3px solid #00a651;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .organic-info .section-header {
+            color: #00a651;
+            margin-bottom: 6px;
+        }
+
+        .organic-text {
+            font-size: 10px;
+            font-weight: 700;
+            color: #00a651;
+            line-height: 1.5;
+        }
+        {% endif %}
+
+        .ean-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .ean-barcode {
+            height: 70px;
+            background: repeating-linear-gradient(
+                90deg,
+                #000 0px, #000 2px,
+                #fff 2px, #fff 4px,
+                #000 4px, #000 6px,
+                #fff 6px, #fff 7px,
+                #000 7px, #000 10px,
+                #fff 10px, #fff 12px
+            );
+            border: 2px solid #000;
+            margin: 0 auto 8px;
+            width: 250px;
+        }
+
+        .ean-number {
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+
+        .business-operator-info {
+            font-size: 10px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .business-operator-info strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .recycling-symbols {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .recycle-icon {
+            font-size: 32px;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #666;
+            padding-top: 12px;
+            border-top: 2px solid #ddd;
+        }
+
+        .footer-info div {
+            font-weight: 700;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .label-container {
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- FRONT LABEL - EU -->
+    <div class="label-container">
+        <div class="front-label">
+            <div class="eu-badge">🇪🇺 EU</div>
+            
+            {% if show_eu_organic_logo %}
+            <div class="eu-organic-seal">
+                <div class="leaf">🌿</div>
+                <div>EU<br>ORGANIC</div>
+                <div class="cert-code">{{ organic_certification }}</div>
+            </div>
+            {% endif %}
+            
+            <div class="header-stripe">
+                <div style="color: white; font-size: 18px; font-weight: 900; letter-spacing: 3px;">PREMIUM QUALITY</div>
+            </div>
+
+            <div class="brand-section">
+                <div class="brand-name">{{ brand_name|default(business_operator.name.split()[0])|upper }}</div>
+                <div class="brand-tagline">{{ brand_tagline|default("EU Certified • Premium Quality") }}</div>
+            </div>
+
+            <div class="product-hero">
+                <div class="product-title">
+                    <h1>{{ product_name|upper }}</h1>
+                    <div class="product-subtitle">{{ product_type|default("")|upper }}</div>
+                </div>
+            </div>
+
+            <div class="product-description">
+                <h2>{{ product_description|default(product_name) }}</h2>
+                <div class="flavor-text">{{ product_variant|default("") }}</div>
+            </div>
+
+            <div class="net-content">
+                <div class="net-content-label">Net Quantity</div>
+                <div class="net-content-value">{{ net_quantity_display }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BACK LABEL - EU -->
+    <div class="label-container">
+        <div class="back-label">
+            <div class="back-header">
+                <h3>NUTRITION & INGREDIENTS</h3>
+            </div>
+
+            <!-- EU Nutrition Declaration -->
+            <div class="nutrition-declaration-eu">
+                <div class="nd-title">Nutrition Declaration</div>
+                <div class="nd-subtitle">Typical values per 100g</div>
+                
+                <div class="nd-row header">
+                    <span>Nutrient</span>
+                    <span>Per 100g</span>
+                </div>
+                
+                <div class="nd-row major">
+                    <span>Energy</span>
+                    <span>{{ nutrition_per_100g.energy_kj }}kJ / {{ nutrition_per_100g.energy_kcal }}kcal</span>
+                </div>
+                
+                <div class="nd-row major">
+                    <span>Fat</span>
+                    <span>{{ nutrition_per_100g.fat }}g</span>
+                </div>
+                <div class="nd-row indent">
+                    <span>of which saturates</span>
+                    <span>{{ nutrition_per_100g.saturates }}g</span>
+                </div>
+                
+                <div class="nd-row major">
+                    <span>Carbohydrate</span>
+                    <span>{{ nutrition_per_100g.carbohydrate }}g</span>
+                </div>
+                <div class="nd-row indent">
+                    <span>of which sugars</span>
+                    <span>{{ nutrition_per_100g.sugars }}g</span>
+                </div>
+                
+                {% if nutrition_per_100g.fibre %}
+                <div class="nd-row">
+                    <span>Fibre</span>
+                    <span>{{ nutrition_per_100g.fibre }}g</span>
+                </div>
+                {% endif %}
+                
+                <div class="nd-row major thick">
+                    <span>Protein</span>
+                    <span>{{ nutrition_per_100g.protein }}g</span>
+                </div>
+                
+                <div class="nd-row major">
+                    <span>Salt</span>
+                    <span>{{ nutrition_per_100g.salt }}g</span>
+                </div>
+            </div>
+
+            <div class="ingredients-section">
+                <div class="section-header">Ingredients:</div>
+                <div class="ingredients-list">
+                    {{ ingredients_formatted|safe }}
+                </div>
+            </div>
+
+            {% if allergens_list %}
+            <div class="allergen-box">
+                <div class="section-header">⚠️ Allergens:</div>
+                <div class="allergen-text">
+                    Contains: {{ allergens_list }}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if show_eu_organic_logo %}
+            <div class="organic-info">
+                <div class="section-header">🌿 EU Organic Certified</div>
+                <div class="organic-text">
+                    {{ organic_certification }}<br>
+                    {{ organic_origin }}<br>
+                    ≥{{ organic_percentage|default(95) }}% organic ingredients
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="ean-section">
+                <div class="ean-barcode"></div>
+                <div class="ean-number">{{ ean_code|default("5 412345 678901") }}</div>
+            </div>
+
+            <div class="business-operator-info">
+                <strong>Business Operator:</strong>
+                {{ business_operator.name }}<br>
+                {{ business_operator.address }}<br>
+                {% if business_operator.phone %}Tel: {{ business_operator.phone }}<br>{% endif %}
+                {% if business_operator.website %}{{ business_operator.website }}<br>{% endif %}
+                <br>
+                {% if country_of_origin %}
+                <strong>Country of Origin:</strong> {{ country_of_origin }}<br>
+                {% endif %}
+                <strong>Storage:</strong> {{ storage_conditions }}
+            </div>
+
+            <div class="recycling-symbols">
+                <div class="recycle-icon" title="Recyclable">♻️</div>
+                <div class="recycle-icon" title="Estimated Quantity">℮</div>
+            </div>
+
+            <div class="footer-info">
+                <div>{{ date_display }}</div>
+                <div>{% if lot_number %}LOT: {{ lot_number }}{% endif %}</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

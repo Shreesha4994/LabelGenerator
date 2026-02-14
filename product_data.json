@@ -1,0 +1,90 @@
+{
+  "product_name": "Organic Millet Energy Bar",
+  "category": "packaged_processed_food",
+  "veg_status": "veg",
+  "net_quantity": {
+    "value": 50,
+    "unit": "g"
+  },
+  "ingredients": [
+    {
+      "name": "Organic Foxtail Millet",
+      "percentage": 30
+    },
+    {
+      "name": "Organic Jaggery",
+      "percentage": 25
+    },
+    {
+      "name": "Organic Almonds",
+      "percentage": 15
+    },
+    {
+      "name": "Organic Dates",
+      "percentage": 12
+    },
+    {
+      "name": "Organic Sesame Seeds",
+      "percentage": 8
+    },
+    {
+      "name": "Organic Ghee (Clarified Butter)",
+      "percentage": 5
+    },
+    {
+      "name": "Organic Cardamom Powder",
+      "percentage": 3
+    },
+    {
+      "name": "Sea Salt",
+      "percentage": 2
+    }
+  ],
+  "nutrition_per_100g": {
+    "energy_kcal": 450,
+    "protein": 12,
+    "carbohydrates": 60,
+    "sugars": 25,
+    "fat": 18,
+    "saturated_fat": 3.5,
+    "trans_fat": 0,
+    "fiber": 8,
+    "sodium": 180
+  },
+  "allergens": [
+    "tree nuts (almonds)",
+    "milk (ghee)",
+    "sesame"
+  ],
+  "allergen_warning": "May contain traces of peanuts and other tree nuts.",
+  "fssai_license": "10012345678901",
+  "manufacturer": {
+    "name": "Bharat Organics Private Limited",
+    "address": "Plot No. 123, Industrial Area, Phase-II, Sector 45, Gurugram - 122003, Haryana, India",
+    "phone": "1800-123-4567",
+    "email": "care@bharatorganics.in"
+  },
+  "batch_number": "IN2026014",
+  "mfg_date": "2026-02-14",
+  "best_before_months": 6,
+  "mrp": 40.00,
+  "storage_instructions": "Store in a cool, dry and hygienic place. Keep away from direct sunlight. Once opened, consume within 3 days.",
+  "is_fortified": false,
+  "is_organic": true,
+  "is_imported": false,
+  "brand_name": "BHARAT ORGANICS",
+  "brand_subtitle": "Pure & Natural • Made in India",
+  "brand_tagline": "PREMIUM INDIAN QUALITY",
+  "product_description": "Organic Millet Bar",
+  "product_variant": "Jaggery & Almond",
+  "product_type": "ENERGY BAR",
+  "product_emoji": "🌾",
+  "customer_care": {
+    "phone": "1800-123-4567 (Toll Free)",
+    "email": "care@bharatorganics.in",
+    "website": "www.bharatorganics.in"
+  },
+  "marketer": "Bharat Organics Pvt. Ltd.",
+  "country_of_origin": "India",
+  "barcode": "8 901234 567890"
+}

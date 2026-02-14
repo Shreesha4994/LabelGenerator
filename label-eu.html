@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EU Compliant Food Label</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .label-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* FRONT LABEL */
+        .front-label {
+            width: 420px;
+            height: 650px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef3 100%);
+            position: relative;
+        }
+
+        .country-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #003399;
+            color: #ffcc00;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .eu-stars {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #003399;
+            color: #ffcc00;
+            padding: 8px;
+            border-radius: 50%;
+            font-size: 16px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-section {
+            height: 90px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 4px solid #e74c3c;
+        }
+
+        .brand-area {
+            text-align: center;
+            padding: 25px 30px;
+        }
+
+        .brand-name {
+            font-size: 46px;
+            font-weight: 900;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        .brand-origin {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .product-display {
+            height: 210px;
+            margin: 20px 30px;
+            background: linear-gradient(135deg, #16a085 0%, #27ae60 50%, #2ecc71 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-display::before {
+            content: '🌿';
+            position: absolute;
+            font-size: 110px;
+            opacity: 0.2;
+            transform: rotate(-20deg);
+        }
+
+        .product-name-section {
+            text-align: center;
+            z-index: 1;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-name-section h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .product-type {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .product-details {
+            text-align: center;
+            padding: 20px 35px;
+        }
+
+        .product-details h2 {
+            font-size: 26px;
+            color: #2c3e50;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .product-variant {
+            font-size: 17px;
+            color: #e67e22;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .eu-certifications {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px;
+            flex-wrap: wrap;
+        }
+
+        .eu-cert-badge {
+            padding: 9px 16px;
+            border-radius: 22px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .cert-bio {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            border: 2px solid #1e8449;
+        }
+
+        .cert-vegan {
+            background: linear-gradient(135deg, #16a085 0%, #138d75 100%);
+            color: white;
+            border: 2px solid #117a65;
+        }
+
+        .cert-fairtrade {
+            background: linear-gradient(135deg, #8e44ad 0%, #7d3c98 100%);
+            color: white;
+            border: 2px solid #6c3483;
+        }
+
+        .net-quantity {
+            text-align: center;
+            padding: 16px;
+            background: white;
+            margin: 0 30px 20px;
+            border: 3px solid #2c3e50;
+            border-radius: 10px;
+        }
+
+        .net-quantity-label {
+            font-size: 12px;
+            color: #7f8c8d;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .net-quantity-value {
+            font-size: 26px;
+            color: #2c3e50;
+            font-weight: 900;
+            margin-top: 5px;
+        }
+
+        .e-mark {
+            font-size: 18px;
+            color: #7f8c8d;
+            margin-left: 5px;
+        }
+
+        /* BACK LABEL */
+        .back-label {
+            width: 420px;
+            height: 650px;
+            background: white;
+            padding: 28px;
+            overflow-y: auto;
+        }
+
+        .back-title {
+            text-align: center;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #2c3e50;
+        }
+
+        .back-title h3 {
+            font-size: 22px;
+            color: #2c3e50;
+            font-weight: 900;
+        }
+
+        /* EU Nutrition Declaration */
+        .nutrition-declaration {
+            border: 2px solid #2c3e50;
+            padding: 12px;
+            margin-bottom: 18px;
+        }
+
+        .nutrition-header {
+            font-size: 16px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .nutrition-subheader {
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2c3e50;
+        }
+
+        .nutrition-table {
+            width: 100%;
+            font-size: 11px;
+        }
+
+        .nutrition-table th {
+            text-align: left;
+            font-weight: 700;
+            padding: 5px 0;
+            border-bottom: 1px solid #2c3e50;
+        }
+
+        .nutrition-table td {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .nutrition-table tr:last-child td {
+            border-bottom: 2px solid #2c3e50;
+        }
+
+        .nutrition-table .indent {
+            padding-left: 15px;
+        }
+
+        .nutrition-table .value-col {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .ri-footnote {
+            font-size: 9px;
+            margin-top: 8px;
+            line-height: 1.3;
+            font-style: italic;
+        }
+
+        .ingredients-area {
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #2c3e50;
+            margin-bottom: 7px;
+            letter-spacing: 0.5px;
+        }
+
+        .ingredients-content {
+            font-size: 10px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .allergen-bold {
+            font-weight: 900;
+            text-decoration: underline;
+        }
+
+        .allergen-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 16px;
+        }
+
+        .allergen-box .section-title {
+            color: #856404;
+            margin-bottom: 5px;
+        }
+
+        .allergen-content {
+            font-size: 10px;
+            font-weight: 700;
+            color: #856404;
+            line-height: 1.5;
+        }
+
+        .ean-section {
+            text-align: center;
+            margin: 18px 0;
+        }
+
+        .ean-barcode {
+            height: 65px;
+            background: repeating-linear-gradient(
+                90deg,
+                #000 0px, #000 2px,
+                #fff 2px, #fff 3px,
+                #000 3px, #000 5px,
+                #fff 5px, #fff 7px,
+                #000 7px, #000 8px,
+                #fff 8px, #fff 11px,
+                #000 11px, #000 13px,
+                #fff 13px, #fff 15px
+            );
+            border: 2px solid #000;
+            margin: 0 auto 6px;
+            width: 240px;
+        }
+
+        .ean-number {
+            font-size: 13px;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .producer-info {
+            font-size: 9px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 14px;
+        }
+
+        .producer-info strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .recycling-section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 14px;
+        }
+
+        .recycle-icon {
+            text-align: center;
+        }
+
+        .recycle-icon div:first-child {
+            font-size: 28px;
+        }
+
+        .recycle-icon div:last-child {
+            font-size: 8px;
+            margin-top: 3px;
+            font-weight: 700;
+        }
+
+        .footer-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            color: #666;
+            padding-top: 10px;
+            border-top: 2px solid #ddd;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer-details div {
+            font-weight: 700;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .label-container {
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- FRONT LABEL - EU -->
+    <div class="label-container">
+        <div class="front-label">
+            <div class="country-badge">🇪🇺 EU</div>
+            <div class="eu-stars">⭐</div>
+            
+            <div class="header-section">
+                <div style="color: white; font-size: 17px; font-weight: 900; letter-spacing: 2px;">PREMIUM EUROPEAN QUALITY</div>
+            </div>
+
+            <div class="brand-area">
+                <div class="brand-name">EUROPA<br>NATURALS</div>
+                <div class="brand-origin">Produit en France • EU Certified</div>
+            </div>
+
+            <div class="product-display">
+                <div class="product-name-section">
+                    <h1>HAZELNUT</h1>
+                    <div class="product-type">ENERGY BAR</div>
+                </div>
+            </div>
+
+            <div class="product-details">
+                <h2>Organic Hazelnut Bar</h2>
+                <div class="product-variant">Chocolate & Hazelnut</div>
+            </div>
+
+            <div class="eu-certifications">
+                <div class="eu-cert-badge cert-bio">🌿 EU Organic</div>
+                <div class="eu-cert-badge cert-vegan">Vegan</div>
+                <div class="eu-cert-badge cert-fairtrade">Fairtrade</div>
+            </div>
+
+            <div class="net-quantity">
+                <div class="net-quantity-label">Net Quantity</div>
+                <div class="net-quantity-value">50g <span class="e-mark">℮</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BACK LABEL - EU -->
+    <div class="label-container">
+        <div class="back-label">
+            <div class="back-title">
+                <h3>NUTRITION & INFORMATION</h3>
+            </div>
+
+            <!-- EU Nutrition Declaration -->
+            <div class="nutrition-declaration">
+                <div class="nutrition-header">Nutrition Declaration</div>
+                <div class="nutrition-subheader">Typical values per 100g:</div>
+                
+                <table class="nutrition-table">
+                    <tbody>
+                        <tr>
+                            <td><strong>Energy</strong></td>
+                            <td class="value-col">2010 kJ / 480 kcal</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fat</strong></td>
+                            <td class="value-col">28g</td>
+                        </tr>
+                        <tr>
+                            <td class="indent">of which saturates</td>
+                            <td class="value-col">5.0g</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Carbohydrate</strong></td>
+                            <td class="value-col">44g</td>
+                        </tr>
+                        <tr>
+                            <td class="indent">of which sugars</td>
+                            <td class="value-col">20g</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fibre</strong></td>
+                            <td class="value-col">6.0g</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Protein</strong></td>
+                            <td class="value-col">16g</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Salt</strong></td>
+                            <td class="value-col">0.28g</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="ri-footnote">
+                    * Reference intake of an average adult (8400 kJ / 2000 kcal)
+                </div>
+            </div>
+
+            <div class="ingredients-area">
+                <div class="section-title">Ingredients:</div>
+                <div class="ingredients-content">
+                    Organic <span class="allergen-bold">HAZELNUTS</span> (35%), Organic Dates, Organic Dark Chocolate (15%) (Organic Cocoa Mass, Organic Cane Sugar, Organic Cocoa Butter), Organic <span class="allergen-bold">OAT</span> Flakes, Organic Agave Syrup, Organic Sunflower Oil, Organic Cocoa Powder, Sea Salt, Natural Vanilla Extract.
+                </div>
+            </div>
+
+            <div class="allergen-box">
+                <div class="section-title">Allergen Information:</div>
+                <div class="allergen-content">
+                    Contains: HAZELNUTS (tree nuts), OATS (gluten). May contain traces of other nuts, peanuts, milk, and soya.
+                </div>
+            </div>
+
+            <div class="ingredients-area">
+                <div class="section-title">Storage Instructions:</div>
+                <div class="ingredients-content">
+                    Store in a cool, dry place away from direct sunlight. Once opened, consume within 3 days.
+                </div>
+            </div>
+
+            <div class="ean-section">
+                <div class="ean-barcode"></div>
+                <div class="ean-number">5 412345 678901</div>
+            </div>
+
+            <div class="producer-info">
+                <strong>Produced by:</strong>
+                Europa Naturals SAS<br>
+                45 Rue de la Santé<br>
+                75014 Paris, France<br>
+                Tel: +33 1 45 67 89 00<br>
+                www.europanaturals.eu<br>
+                <br>
+                <strong>Origin:</strong> EU Agriculture<br>
+                <strong>Certification:</strong> FR-BIO-01 EU/Non-EU Agriculture
+            </div>
+
+            <div class="recycling-section">
+                <div class="recycle-icon">
+                    <div>♻️</div>
+                    <div>RECYCLABLE</div>
+                </div>
+                <div class="recycle-icon">
+                    <div>🌱</div>
+                    <div>COMPOSTABLE</div>
+                </div>
+                <div class="recycle-icon">
+                    <div>🌍</div>
+                    <div>ECO-FRIENDLY</div>
+                </div>
+            </div>
+
+            <div class="footer-details">
+                <div>Best Before: See Top</div>
+                <div>Lot: EU2026014</div>
+                <div>Made in France 🇫🇷</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

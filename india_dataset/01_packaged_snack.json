@@ -1,0 +1,50 @@
+{
+  "product_name": "Chocolate Chip Cookies",
+  "category": "packaged_processed_food",
+  "veg_status": "veg",
+  "net_quantity": {
+    "value": 200,
+    "unit": "g"
+  },
+  "ingredients": [
+    {"name": "Wheat flour (Maida)", "percentage": 45},
+    {"name": "Sugar", "percentage": 25},
+    {"name": "Refined Palm Oil", "percentage": 15},
+    {"name": "Chocolate Chips", "percentage": 10},
+    {"name": "Milk Solids", "percentage": 3},
+    {
+      "name": "Sodium Bicarbonate",
+      "ins_number": "500",
+      "class_name": "Raising Agent"
+    },
+    {"name": "Salt"},
+    {"name": "Vanilla Flavour"}
+  ],
+  "allergens": ["wheat", "milk"],
+  "nutrition_per_100g": {
+    "energy_kcal": 480,
+    "protein": 6.5,
+    "carbohydrates": 65,
+    "fat": 20,
+    "saturated_fat": 10,
+    "trans_fat": 0,
+    "sugar": 28,
+    "sodium": 0.35,
+    "fiber": 2
+  },
+  "fssai_license": "10012345678901",
+  "manufacturer": {
+    "name": "Delicious Bakers Pvt Ltd",
+    "address": "Plot No. 45, Industrial Area, Phase-II, Gurgaon, Haryana 122015, India"
+  },
+  "batch_number": "CB2026014",
+  "mfg_date": "2026-02-14",
+  "best_before_months": 6,
+  "mrp": 60.00,
+  "storage_instructions": "Store in a cool, dry place away from direct sunlight",
+  "customer_care": {
+    "phone": "1800-123-4567",
+    "email": "care@deliciousbakers.in",
+    "website": "www.deliciousbakers.in"
+  }
+}

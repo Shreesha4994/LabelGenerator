@@ -1,0 +1,93 @@
+{
+  "product_name": "Organic Almond Butter",
+  "category": "packaged_food",
+  "net_quantity": {
+    "us_value": 16,
+    "us_unit": "oz",
+    "metric_value": 454,
+    "metric_unit": "g"
+  },
+  "nutrition_facts": {
+    "serving_size": "2 tbsp (32g)",
+    "servings_per_container": 14,
+    "calories": 190,
+    "total_fat": {
+      "value": 17,
+      "dv": 22
+    },
+    "saturated_fat": {
+      "value": 1.5,
+      "dv": 8
+    },
+    "trans_fat": 0,
+    "cholesterol": {
+      "value": 0,
+      "dv": 0
+    },
+    "sodium": {
+      "value": 0,
+      "dv": 0
+    },
+    "total_carb": {
+      "value": 6,
+      "dv": 2
+    },
+    "fiber": {
+      "value": 3,
+      "dv": 11
+    },
+    "total_sugars": 2,
+    "added_sugars": {
+      "value": 0,
+      "dv": 0
+    },
+    "protein": 7,
+    "vitamin_d": {
+      "value": 0,
+      "dv": 0
+    },
+    "calcium": {
+      "value": 80,
+      "dv": 6
+    },
+    "iron": {
+      "value": 1,
+      "dv": 6
+    },
+    "potassium": {
+      "value": 240,
+      "dv": 5
+    }
+  },
+  "ingredients": [
+    "Organic Dry Roasted Almonds",
+    "Sea Salt"
+  ],
+  "allergens": [
+    "tree nuts (almonds)"
+  ],
+  "manufacturer": {
+    "name": "American Harvest Foods LLC",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97201",
+    "phone": "1-800-555-FOOD",
+    "website": "www.americanharvestfoods.com"
+  },
+  "is_organic": true,
+  "organic_level": "100_percent",
+  "is_imported": false,
+  "country_of_origin": "USA",
+  "storage_instructions": "Store in a cool, dry place. Refrigerate after opening.",
+  "best_before": "12/31/2026",
+  "lot_code": "2026US014",
+  "upc_code": "0 12345 67890 5",
+  "brand_name": "AMERICAN HARVEST",
+  "brand_tagline": "Since 1985 • Made in USA",
+  "product_description": "Organic Almond Butter",
+  "product_variant": "Crunchy Style",
+  "product_type": "NUT BUTTER",
+  "product_emoji": "🥜",
+  "show_nongmo": true,
+  "show_kosher": false
+}

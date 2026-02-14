@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Food Labeling Act Compliant Label</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'MS Gothic', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #c31432 0%, #240b36 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .label-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* FRONT LABEL */
+        .front-label {
+            width: 420px;
+            height: 650px;
+            background: linear-gradient(135deg, #fef5e7 0%, #fadbd8 100%);
+            position: relative;
+        }
+
+        .country-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #c31432;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .japan-symbol {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 45px;
+            height: 45px;
+            background: white;
+            border: 3px solid #c31432;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-japan {
+            height: 90px;
+            background: linear-gradient(135deg, #c31432 0%, #8b0000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 4px solid #000;
+        }
+
+        .brand-japan {
+            text-align: center;
+            padding: 25px 30px;
+        }
+
+        .brand-name-jp {
+            font-size: 38px;
+            font-weight: 900;
+            color: #c31432;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+
+        .brand-name-en {
+            font-size: 24px;
+            font-weight: 700;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .brand-tagline-jp {
+            font-size: 11px;
+            color: #7f8c8d;
+            margin-top: 8px;
+            letter-spacing: 2px;
+        }
+
+        .product-visual {
+            height: 200px;
+            margin: 20px 30px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #c31432;
+        }
+
+        .product-visual::before {
+            content: '🍓';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.2;
+            transform: rotate(-10deg);
+        }
+
+        .product-title-jp {
+            text-align: center;
+            z-index: 1;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .product-title-jp h1 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .product-title-en {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .product-desc {
+            text-align: center;
+            padding: 20px 35px;
+        }
+
+        .product-desc-jp {
+            font-size: 22px;
+            color: #c31432;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .product-desc-en {
+            font-size: 15px;
+            color: #e67e22;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .japan-certs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px;
+            flex-wrap: wrap;
+        }
+
+        .japan-cert-badge {
+            padding: 9px 16px;
+            border-radius: 22px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .cert-jas {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            border: 2px solid #1e8449;
+        }
+
+        .cert-halal {
+            background: linear-gradient(135deg, #16a085 0%, #138d75 100%);
+            color: white;
+            border: 2px solid #117a65;
+        }
+
+        .cert-haccp {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: 2px solid #21618c;
+        }
+
+        .net-weight-japan {
+            text-align: center;
+            padding: 16px;
+            background: white;
+            margin: 0 30px 20px;
+            border: 3px solid #c31432;
+            border-radius: 10px;
+        }
+
+        .net-weight-label-jp {
+            font-size: 14px;
+            color: #7f8c8d;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .net-weight-value-jp {
+            font-size: 26px;
+            color: #c31432;
+            font-weight: 900;
+        }
+
+        /* BACK LABEL */
+        .back-label {
+            width: 420px;
+            height: 650px;
+            background: white;
+            padding: 28px;
+            overflow-y: auto;
+        }
+
+        .back-header-jp {
+            text-align: center;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #c31432;
+        }
+
+        .back-header-jp h3 {
+            font-size: 20px;
+            color: #c31432;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+        .back-header-en {
+            font-size: 14px;
+            color: #555;
+            font-weight: 700;
+        }
+
+        /* Japan Nutrition Facts */
+        .nutrition-japan {
+            border: 2px solid #c31432;
+            padding: 12px;
+            margin-bottom: 18px;
+        }
+
+        .nutrition-title-jp {
+            font-size: 16px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: #c31432;
+        }
+
+        .nutrition-serving-jp {
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #c31432;
+        }
+
+        .nutrition-table-jp {
+            width: 100%;
+            font-size: 11px;
+        }
+
+        .nutrition-table-jp td {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .nutrition-table-jp tr:last-child td {
+            border-bottom: 2px solid #c31432;
+        }
+
+        .nutrition-table-jp .nutrient-jp {
+            font-weight: 700;
+        }
+
+        .nutrition-table-jp .value-jp {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .ingredients-japan {
+            margin-bottom: 16px;
+        }
+
+        .section-title-jp {
+            font-size: 12px;
+            font-weight: 900;
+            color: #c31432;
+            margin-bottom: 7px;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title-en {
+            font-size: 10px;
+            color: #7f8c8d;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .ingredients-text-jp {
+            font-size: 10px;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 5px;
+        }
+
+        .allergen-japan {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 16px;
+        }
+
+        .allergen-japan .section-title-jp {
+            color: #856404;
+            margin-bottom: 5px;
+        }
+
+        .allergen-text-jp {
+            font-size: 10px;
+            font-weight: 700;
+            color: #856404;
+            line-height: 1.5;
+        }
+
+        .allergen-table {
+            margin-top: 8px;
+            font-size: 9px;
+            background: white;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .allergen-table-title {
+            font-weight: 900;
+            margin-bottom: 5px;
+            color: #856404;
+        }
+
+        .allergen-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+        }
+
+        .allergen-item {
+            padding: 3px;
+            background: #fff;
+            border: 1px solid #ffc107;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        .allergen-item.contains {
+            background: #ffc107;
+            font-weight: 900;
+        }
+
+        .jan-section {
+            text-align: center;
+            margin: 18px 0;
+        }
+
+        .jan-barcode {
+            height: 65px;
+            background: repeating-linear-gradient(
+                90deg,
+                #000 0px, #000 2px,
+                #fff 2px, #fff 3px,
+                #000 3px, #000 6px,
+                #fff 6px, #fff 8px,
+                #000 8px, #000 9px,
+                #fff 9px, #fff 12px,
+                #000 12px, #000 14px,
+                #fff 14px, #fff 16px
+            );
+            border: 2px solid #000;
+            margin: 0 auto 6px;
+            width: 240px;
+        }
+
+        .jan-number {
+            font-size: 13px;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .manufacturer-japan {
+            font-size: 9px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 14px;
+        }
+
+        .manufacturer-japan strong {
+            display: block;
+            margin-bottom: 3px;
+            color: #c31432;
+        }
+
+        .storage-japan {
+            background: #f8f9fa;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 14px;
+        }
+
+        .storage-title-jp {
+            font-size: 11px;
+            font-weight: 900;
+            color: #c31432;
+            margin-bottom: 5px;
+        }
+
+        .storage-text-jp {
+            font-size: 10px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .footer-japan {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            color: #666;
+            padding-top: 10px;
+            border-top: 2px solid #ddd;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer-japan div {
+            font-weight: 700;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .label-container {
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- FRONT LABEL - JAPAN -->
+    <div class="label-container">
+        <div class="front-label">
+            <div class="country-badge">🇯🇵 JAPAN</div>
+            <div class="japan-symbol">🌸</div>
+            
+            <div class="header-japan">
+                <div style="color: white; font-size: 16px; font-weight: 900; letter-spacing: 2px;">日本品質保証</div>
+            </div>
+
+            <div class="brand-japan">
+                <div class="brand-name-jp">桜フーズ</div>
+                <div class="brand-name-en">SAKURA FOODS</div>
+                <div class="brand-tagline-jp">自然の恵み • 日本製</div>
+            </div>
+
+            <div class="product-visual">
+                <div class="product-title-jp">
+                    <h1>いちご</h1>
+                    <div class="product-title-en">STRAWBERRY BAR</div>
+                </div>
+            </div>
+
+            <div class="product-desc">
+                <div class="product-desc-jp">オーガニックいちごバー</div>
+                <div class="product-desc-en">Organic Strawberry Energy Bar</div>
+            </div>
+
+            <div class="japan-certs">
+                <div class="japan-cert-badge cert-jas">🌿 有機JAS</div>
+                <div class="japan-cert-badge cert-halal">ハラール認証</div>
+                <div class="japan-cert-badge cert-haccp">HACCP</div>
+            </div>
+
+            <div class="net-weight-japan">
+                <div class="net-weight-label-jp">内容量 / Net Weight</div>
+                <div class="net-weight-value-jp">50g</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BACK LABEL - JAPAN -->
+    <div class="label-container">
+        <div class="back-label">
+            <div class="back-header-jp">
+                <h3>栄養成分表示</h3>
+                <div class="back-header-en">Nutrition Facts</div>
+            </div>
+
+            <!-- Japan Nutrition Facts -->
+            <div class="nutrition-japan">
+                <div class="nutrition-title-jp">栄養成分表示</div>
+                <div class="nutrition-serving-jp">1袋（50g）当たり / Per serving (50g)</div>
+                
+                <table class="nutrition-table-jp">
+                    <tbody>
+                        <tr>
+                            <td class="nutrient-jp">エネルギー / Energy</td>
+                            <td class="value-jp">225 kcal</td>
+                        </tr>
+                        <tr>
+                            <td class="nutrient-jp">たんぱく質 / Protein</td>
+                            <td class="value-jp">6.0g</td>
+                        </tr>
+                        <tr>
+                            <td class="nutrient-jp">脂質 / Fat</td>
+                            <td class="value-jp">9.0g</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 15px;">飽和脂肪酸 / Saturated</td>
+                            <td class="value-jp">1.8g</td>
+                        </tr>
+                        <tr>
+                            <td class="nutrient-jp">炭水化物 / Carbohydrate</td>
+                            <td class="value-jp">30g</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 15px;">糖質 / Sugars</td>
+                            <td class="value-jp">22g</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 15px;">食物繊維 / Fiber</td>
+                            <td class="value-jp">4.0g</td>
+                        </tr>
+                        <tr>
+                            <td class="nutrient-jp">食塩相当量 / Salt equiv.</td>
+                            <td class="value-jp">0.15g</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="ingredients-japan">
+                <div class="section-title-jp">原材料名</div>
+                <div class="section-title-en">Ingredients</div>
+                <div class="ingredients-text-jp">
+                    有機いちご（国産）、有機オーツ麦、有機アガベシロップ、有機アーモンド、有機ココナッツオイル、有機チアシード、食塩、天然香料
+                </div>
+                <div class="ingredients-text-jp" style="font-size: 9px; color: #666;">
+                    Organic Strawberries (Japan), Organic Oats, Organic Agave Syrup, Organic Almonds, Organic Coconut Oil, Organic Chia Seeds, Salt, Natural Flavoring
+                </div>
+            </div>
+
+            <div class="allergen-japan">
+                <div class="section-title-jp">アレルギー情報</div>
+                <div class="section-title-en">Allergen Information</div>
+                <div class="allergen-text-jp">
+                    本品に含まれるアレルギー物質：アーモンド（特定原材料に準ずるもの）
+                </div>
+                
+                <div class="allergen-table">
+                    <div class="allergen-table-title">特定原材料等28品目 / 28 Allergens</div>
+                    <div class="allergen-grid">
+                        <div class="allergen-item">卵</div>
+                        <div class="allergen-item">乳</div>
+                        <div class="allergen-item">小麦</div>
+                        <div class="allergen-item">そば</div>
+                        <div class="allergen-item">落花生</div>
+                        <div class="allergen-item">えび</div>
+                        <div class="allergen-item">かに</div>
+                        <div class="allergen-item contains">アーモンド</div>
+                        <div class="allergen-item">くるみ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="jan-section">
+                <div class="jan-barcode"></div>
+                <div class="jan-number">4 901234 567890</div>
+            </div>
+
+            <div class="manufacturer-japan">
+                <strong>製造者 / Manufacturer:</strong>
+                株式会社 桜フーズ<br>
+                Sakura Foods Co., Ltd.<br>
+                〒100-0001<br>
+                東京都千代田区千代田1-1-1<br>
+                Tokyo, Chiyoda-ku, Chiyoda 1-1-1<br>
+                Tel: 03-1234-5678<br>
+                www.sakurafoods.jp
+            </div>
+
+            <div class="storage-japan">
+                <div class="storage-title-jp">保存方法 / Storage</div>
+                <div class="storage-text-jp">
+                    直射日光、高温多湿を避けて保存してください。開封後は冷蔵庫で保存し、お早めにお召し上がりください。<br>
+                    <span style="font-size: 9px; color: #666;">Store in a cool, dry place away from direct sunlight. Refrigerate after opening and consume promptly.</span>
+                </div>
+            </div>
+
+            <div class="footer-japan">
+                <div>賞味期限 / Best Before: 2026.12.31</div>
+                <div>製造年月日 / MFG: 2026.02.14</div>
+                <div>日本製 🇯🇵</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

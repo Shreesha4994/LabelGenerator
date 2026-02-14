@@ -1,0 +1,19 @@
+# Combined Requirements for SAP BTP Cloud Foundry Deployment
+# Food Label Generator API Service
+
+# Core Flask
+Flask==3.0.0
+Werkzeug==3.0.1
+
+# CORS support
+Flask-CORS==4.0.0
+
+# Template engine
+Jinja2==3.1.3
+MarkupSafe==2.1.3
+
+# Production WSGI server
+gunicorn==21.2.0
+
+# Environment variable management
+python-dotenv==1.0.0

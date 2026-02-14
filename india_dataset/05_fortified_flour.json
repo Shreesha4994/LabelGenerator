@@ -1,0 +1,47 @@
+{
+  "product_name": "Fortified Wheat Flour (Atta)",
+  "category": "fortified",
+  "veg_status": "veg",
+  "net_quantity": {
+    "value": 5,
+    "unit": "kg"
+  },
+  "ingredients": [
+    {
+      "name": "Whole Wheat",
+      "percentage": 99.5
+    },
+    {
+      "name": "Iron",
+      "percentage": 0.003
+    },
+    {
+      "name": "Folic Acid",
+      "percentage": 1e-05
+    },
+    {
+      "name": "Vitamin B12",
+      "percentage": 1e-06
+    }
+  ],
+  "nutrition_per_100g": {
+    "energy_kcal": 341,
+    "protein": 12,
+    "carbohydrates": 69,
+    "fat": 1.7,
+    "fiber": 11,
+    "sodium": 0.01
+  },
+  "fssai_license": "10012345678905",
+  "manufacturer": {
+    "name": "Healthy Grains Mills Pvt Ltd",
+    "address": "Industrial Plot 789, Ludhiana, Punjab 141003, India"
+  },
+  "batch_number": "FA2026014",
+  "mfg_date": "2026-02-14",
+  "best_before_months": 6,
+  "mrp": 250.0,
+  "is_fortified": true,
+  "fortification_details": "Fortified with Iron (28-42.5 ppm), Folic Acid (75-125 mcg/kg), Vitamin B12 (0.75-1.25 mcg/kg)",
+  "storage_instructions": "Store in a cool, dry place in an airtight container"
+}

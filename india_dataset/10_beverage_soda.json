@@ -1,0 +1,54 @@
+{
+  "product_name": "Lemon Lime Soda",
+  "category": "beverage_carbonated",
+  "veg_status": "veg",
+  "net_quantity": {
+    "value": 600,
+    "unit": "ml"
+  },
+  "ingredients": [
+    {
+      "name": "Carbonated Water",
+      "percentage": 88
+    },
+    {
+      "name": "Sugar",
+      "percentage": 10
+    },
+    {
+      "name": "Citric Acid",
+      "ins_number": "330",
+      "class_name": "Acidity Regulator"
+    },
+    {
+      "name": "Natural Lemon Flavour"
+    },
+    {
+      "name": "Natural Lime Flavour"
+    },
+    {
+      "name": "Sodium Benzoate",
+      "ins_number": "211",
+      "class_name": "Preservative"
+    }
+  ],
+  "nutrition_per_100g": {
+    "energy_kcal": 42,
+    "protein": 0,
+    "carbohydrates": 10.5,
+    "fat": 0,
+    "sugar": 10.5,
+    "sodium": 0.01
+  },
+  "fssai_license": "10012345678910",
+  "manufacturer": {
+    "name": "Refreshing Beverages Ltd",
+    "address": "Beverage Park, Sector 59, Noida, Uttar Pradesh 201301, India"
+  },
+  "batch_number": "LL2026014",
+  "mfg_date": "2026-02-14",
+  "best_before_months": 9,
+  "mrp": 40.0,
+  "contains_caffeine": false,
+  "storage_instructions": "Store in a cool, dry place. Best served chilled"
+}

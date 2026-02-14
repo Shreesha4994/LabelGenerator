@@ -1,0 +1,52 @@
+{
+  "product_name": "Mango Fruit Drink",
+  "category": "beverage_juice",
+  "veg_status": "veg",
+  "net_quantity": {
+    "value": 200,
+    "unit": "ml"
+  },
+  "ingredients": [
+    {
+      "name": "Water",
+      "percentage": 55
+    },
+    {
+      "name": "Mango Pulp",
+      "percentage": 40
+    },
+    {
+      "name": "Sugar",
+      "percentage": 4
+    },
+    {
+      "name": "Citric Acid",
+      "ins_number": "330",
+      "class_name": "Acidity Regulator"
+    },
+    {
+      "name": "Vitamin C",
+      "ins_number": "300",
+      "class_name": "Antioxidant"
+    }
+  ],
+  "nutrition_per_100g": {
+    "energy_kcal": 52,
+    "protein": 0.2,
+    "carbohydrates": 13,
+    "fat": 0,
+    "sugar": 12,
+    "sodium": 0.01
+  },
+  "fssai_license": "10012345678903",
+  "manufacturer": {
+    "name": "Tropical Beverages Pvt Ltd",
+    "address": "Survey No. 123, MIDC Area, Pune, Maharashtra 411019, India"
+  },
+  "batch_number": "MJ2026014",
+  "mfg_date": "2026-02-14",
+  "best_before_months": 9,
+  "mrp": 20.0,
+  "fruit_percentage": 40,
+  "storage_instructions": "Store in a cool, dry place. Refrigerate after opening"
+}

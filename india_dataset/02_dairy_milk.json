@@ -1,0 +1,36 @@
+{
+  "product_name": "Full Cream Milk",
+  "category": "dairy",
+  "veg_status": "veg",
+  "net_quantity": {
+    "value": 500,
+    "unit": "ml"
+  },
+  "ingredients": [
+    {
+      "name": "Fresh Cow Milk",
+      "percentage": 100
+    }
+  ],
+  "nutrition_per_100g": {
+    "energy_kcal": 66,
+    "protein": 3.2,
+    "carbohydrates": 4.8,
+    "fat": 3.5,
+    "saturated_fat": 2.2,
+    "sugar": 4.8,
+    "sodium": 0.04
+  },
+  "fssai_license": "10012345678902",
+  "manufacturer": {
+    "name": "Pure Dairy Products Ltd",
+    "address": "Village Khera, Sonipat, Haryana 131001, India"
+  },
+  "batch_number": "MD2026014",
+  "mfg_date": "2026-02-14",
+  "best_before_days": 3,
+  "mrp": 28.0,
+  "fat_percentage": 3.5,
+  "milk_source": "Cow",
+  "storage_instructions": "Keep refrigerated at 4\u00b0C or below"
+}

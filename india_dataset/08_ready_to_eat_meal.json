@@ -1,0 +1,56 @@
+{
+  "product_name": "Dal Makhani Ready to Eat",
+  "category": "ready_to_eat",
+  "veg_status": "veg",
+  "net_quantity": {
+    "value": 300,
+    "unit": "g"
+  },
+  "ingredients": [
+    {
+      "name": "Black Lentils",
+      "percentage": 40
+    },
+    {
+      "name": "Water",
+      "percentage": 30
+    },
+    {
+      "name": "Tomato Puree",
+      "percentage": 15
+    },
+    {
+      "name": "Butter",
+      "percentage": 8
+    },
+    {
+      "name": "Cream",
+      "percentage": 5
+    },
+    {
+      "name": "Spices",
+      "percentage": 2
+    }
+  ],
+  "allergens": [
+    "milk"
+  ],
+  "nutrition_per_100g": {
+    "energy_kcal": 145,
+    "protein": 6,
+    "carbohydrates": 15,
+    "fat": 6,
+    "fiber": 3,
+    "sodium": 0.45
+  },
+  "fssai_license": "10012345678908",
+  "manufacturer": {
+    "name": "Ready Meals India Pvt Ltd",
+    "address": "Food Park, Plot 234, Manesar, Haryana 122051, India"
+  },
+  "batch_number": "DM2026014",
+  "mfg_date": "2026-02-14",
+  "best_before_months": 12,
+  "mrp": 85.0,
+  "storage_instructions": "Store in a cool, dry place. Refrigerate after opening and consume within 2 days"
+}

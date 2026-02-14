@@ -1,0 +1,47 @@
+{
+  "product_name": "Mixed Frozen Vegetables",
+  "category": "frozen",
+  "veg_status": "veg",
+  "net_quantity": {
+    "value": 400,
+    "unit": "g"
+  },
+  "ingredients": [
+    {
+      "name": "Green Peas",
+      "percentage": 30
+    },
+    {
+      "name": "Carrots",
+      "percentage": 25
+    },
+    {
+      "name": "Beans",
+      "percentage": 25
+    },
+    {
+      "name": "Corn",
+      "percentage": 20
+    }
+  ],
+  "nutrition_per_100g": {
+    "energy_kcal": 65,
+    "protein": 3.5,
+    "carbohydrates": 12,
+    "fat": 0.5,
+    "fiber": 4,
+    "sodium": 0.03
+  },
+  "fssai_license": "10012345678907",
+  "manufacturer": {
+    "name": "Frozen Fresh Foods Ltd",
+    "address": "Cold Storage Complex, NH-44, Panipat, Haryana 132103, India"
+  },
+  "batch_number": "FV2026014",
+  "mfg_date": "2026-02-14",
+  "best_before_months": 12,
+  "mrp": 80.0,
+  "storage_temperature": "-18\u00b0C or below",
+  "thawing_instructions": "Do not refreeze after thawing. Cook from frozen or thaw in refrigerator",
+  "storage_instructions": "Keep frozen at -18\u00b0C or below"
+}

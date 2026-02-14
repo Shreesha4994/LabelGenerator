@@ -1,0 +1,52 @@
+# Cloud Foundry ignore file
+# Files and directories to exclude from deployment
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Test files
+test_*.py
+*_test.py
+
+# Generated files
+generated_label*.html
+
+# Documentation (optional - remove if you want to include)
+# README.md
+# API_README.md
+# FIELD_GUIDE.md
+
+# Local environment
+.env
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak

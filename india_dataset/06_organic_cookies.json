@@ -1,0 +1,55 @@
+{
+  "product_name": "Organic Oat Cookies",
+  "category": "organic",
+  "veg_status": "veg",
+  "net_quantity": {
+    "value": 150,
+    "unit": "g"
+  },
+  "ingredients": [
+    {
+      "name": "Organic Oats",
+      "percentage": 50
+    },
+    {
+      "name": "Organic Jaggery",
+      "percentage": 25
+    },
+    {
+      "name": "Organic Coconut Oil",
+      "percentage": 15
+    },
+    {
+      "name": "Organic Raisins",
+      "percentage": 8
+    },
+    {
+      "name": "Organic Cardamom Powder",
+      "percentage": 2
+    }
+  ],
+  "allergens": [
+    "tree nuts"
+  ],
+  "nutrition_per_100g": {
+    "energy_kcal": 420,
+    "protein": 8,
+    "carbohydrates": 58,
+    "fat": 16,
+    "fiber": 6,
+    "sugar": 22,
+    "sodium": 0.02
+  },
+  "fssai_license": "10012345678906",
+  "manufacturer": {
+    "name": "Organic Foods India Pvt Ltd",
+    "address": "Eco Park, Sector 15, Faridabad, Haryana 121007, India"
+  },
+  "batch_number": "OC2026014",
+  "mfg_date": "2026-02-14",
+  "best_before_months": 4,
+  "mrp": 120.0,
+  "is_organic": true,
+  "organic_certification": "India Organic (NPOP)",
+  "storage_instructions": "Store in a cool, dry place"
+}

@@ -1,0 +1,18 @@
+---
+applications:
+- name: label-generator-api
+  memory: 212M
+  disk_quota: 512M
+  instances: 1
+  buildpacks:
+    - python_buildpack
+  command: gunicorn -w 4 -b 0.0.0.0:$PORT --timeout 60 app:app
+  health-check-type: http
+  health-check-http-endpoint: /api/health
+  env:
+    FLASK_HOST: 0.0.0.0
+    FLASK_DEBUG: false
+    CORS_ORIGINS: "*"
+    MAX_CONTENT_LENGTH: "16777216"
+  routes:
+    - route: label-generator-api.cfapps.eu11.hana.ondemand.com
