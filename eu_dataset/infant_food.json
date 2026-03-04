@@ -1,0 +1,51 @@
+{
+  "product_name": "Organic Baby Rice Cereal",
+  "category": "infant_food",
+  "brand_name": "BabyNature",
+  "product_description": "First Foods Rice Cereal - From 4 Months",
+  "net_quantity": {
+    "value": 200,
+    "unit": "g"
+  },
+  "ingredients": [
+    {
+      "name": "Organic Rice Flour",
+      "percentage": 95
+    },
+    {
+      "name": "Vitamin B1 (Thiamin)"
+    },
+    {
+      "name": "Iron (Ferric Pyrophosphate)"
+    }
+  ],
+  "allergens": [],
+  "nutrition_per_100g": {
+    "energy_kj": 1600,
+    "energy_kcal": 380,
+    "fat": 1.5,
+    "saturates": 0.3,
+    "carbohydrate": 82,
+    "sugars": 0.5,
+    "fibre": 1,
+    "protein": 7,
+    "salt": 0.01
+  },
+  "is_organic": true,
+  "organic_certification": "DE-ÖKO-001",
+  "organic_percentage": 95,
+  "suitable_from_months": 4,
+  "preparation_instructions": "Mix 1-2 tablespoons with breast milk, formula, or water. Stir until smooth. Always test temperature before feeding.",
+  "date_type": "best_before",
+  "best_before": "30/09/2026",
+  "lot_number": "IF2026012",
+  "storage_conditions": "Store in a cool, dry place. Once opened, use within 4 weeks and keep tightly sealed",
+  "warnings": "Important: Breast milk is best for babies. This product should only be used on the advice of a healthcare professional.",
+  "business_operator": {
+    "name": "BabyNature GmbH",
+    "address": "Kinderstraße 10, 80333 München, Germany",
+    "phone": "+49 89 987654"
+  },
+  "country_of_origin": "Germany",
+  "ean_code": "4 001234 567890"
+}

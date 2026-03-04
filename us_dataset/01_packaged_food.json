@@ -76,6 +76,10 @@
   },
   "is_organic": true,
   "organic_level": "100_percent",
+  "organic_certifier": {
+    "name": "Oregon Tilth Certified Organic",
+    "code": "OTCO"
+  },
   "is_imported": false,
   "country_of_origin": "USA",
   "storage_instructions": "Store in a cool, dry place. Refrigerate after opening.",

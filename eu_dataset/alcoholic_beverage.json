@@ -1,0 +1,52 @@
+{
+  "product_name": "Château Bordeaux Rouge",
+  "category": "alcoholic_beverage",
+  "brand_name": "Château Margaux",
+  "product_description": "2020 Vintage Red Wine",
+  "net_quantity": {
+    "value": 750,
+    "unit": "ml"
+  },
+  "ingredients": [
+    {
+      "name": "Grapes (Merlot, Cabernet Sauvignon)"
+    },
+    {
+      "name": "Sulphites",
+      "is_allergen": true,
+      "e_number": "E220"
+    }
+  ],
+  "allergens": [
+    "sulphites"
+  ],
+  "nutrition_per_100g": {
+    "energy_kj": 290,
+    "energy_kcal": 70,
+    "fat": 0,
+    "saturates": 0,
+    "carbohydrate": 2.5,
+    "sugars": 0.5,
+    "protein": 0.1,
+    "salt": 0
+  },
+  "abv": 13.5,
+  "contains_sulphites": true,
+  "vintage": 2020,
+  "grape_varieties": [
+    "Merlot (60%)",
+    "Cabernet Sauvignon (40%)"
+  ],
+  "date_type": "best_before",
+  "best_before": "Best enjoyed within 10 years",
+  "lot_number": "W2020045",
+  "storage_conditions": "Store horizontally in a cool, dark place at 12-16°C",
+  "business_operator": {
+    "name": "Château Margaux SARL",
+    "address": "33460 Margaux, Bordeaux, France",
+    "phone": "+33 5 57 88 83 83"
+  },
+  "country_of_origin": "France",
+  "appellation": "Margaux AOC",
+  "ean_code": "3 012345 678901"
+}

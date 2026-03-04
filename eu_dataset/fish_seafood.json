@@ -1,0 +1,45 @@
+{
+  "product_name": "Atlantic Salmon Fillet",
+  "category": "fish_seafood",
+  "brand_name": "OceanCatch",
+  "product_description": "Fresh Salmon Fillet, Skin-On",
+  "net_quantity": {
+    "value": 250,
+    "unit": "g"
+  },
+  "ingredients": [
+    {
+      "name": "Atlantic Salmon (Salmo salar)",
+      "percentage": 100,
+      "is_allergen": true
+    }
+  ],
+  "allergens": [
+    "fish"
+  ],
+  "nutrition_per_100g": {
+    "energy_kj": 920,
+    "energy_kcal": 220,
+    "fat": 13,
+    "saturates": 2.5,
+    "carbohydrate": 0,
+    "sugars": 0,
+    "protein": 25,
+    "salt": 0.1
+  },
+  "date_type": "use_by",
+  "use_by": "22/02/2026",
+  "lot_number": "F2026022",
+  "storage_conditions": "Keep refrigerated at 0-2°C. Consume on day of purchase",
+  "business_operator": {
+    "name": "OceanCatch AS",
+    "address": "Havnegata 12, 5003 Bergen, Norway",
+    "phone": "+47 55 123456"
+  },
+  "country_of_origin": "Norway",
+  "catch_method": "Farmed",
+  "catch_area": "FAO 27 - Northeast Atlantic",
+  "wild_or_farmed": "Farmed",
+  "latin_name": "Salmo salar",
+  "ean_code": "7 038010 123456"
+}

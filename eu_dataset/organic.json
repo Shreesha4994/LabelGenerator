@@ -1,0 +1,43 @@
+{
+  "product_name": "Extra Virgin Olive Oil",
+  "category": "organic",
+  "brand_name": "Terra Verde",
+  "product_description": "Cold-Pressed Organic Olive Oil",
+  "net_quantity": {
+    "value": 500,
+    "unit": "ml"
+  },
+  "ingredients": [
+    {
+      "name": "Organic Extra Virgin Olive Oil",
+      "percentage": 100
+    }
+  ],
+  "allergens": [],
+  "nutrition_per_100g": {
+    "energy_kj": 3700,
+    "energy_kcal": 884,
+    "fat": 100,
+    "saturates": 14,
+    "carbohydrate": 0,
+    "sugars": 0,
+    "protein": 0,
+    "salt": 0
+  },
+  "is_organic": true,
+  "organic_certification": "IT-BIO-006",
+  "organic_percentage": 100,
+  "organic_origin": "EU Agriculture",
+  "date_type": "best_before",
+  "best_before": "30/06/2027",
+  "lot_number": "OL2026008",
+  "storage_conditions": "Store in a cool, dark place. Best consumed within 6 months of opening",
+  "business_operator": {
+    "name": "Terra Verde Srl",
+    "address": "Via Oliveto 45, 50125 Firenze, Italy",
+    "phone": "+39 055 123456",
+    "website": "www.terraverde.it"
+  },
+  "country_of_origin": "Italy",
+  "ean_code": "8 001234 567890"
+}

@@ -1,0 +1,56 @@
+{
+  "product_name": "Corn Tortilla Chips",
+  "category": "packaged_food",
+  "net_quantity": {
+    "us_value": 10,
+    "us_unit": "oz",
+    "metric_value": 283,
+    "metric_unit": "g"
+  },
+  "ingredients": [
+    "Corn",
+    "Vegetable Oil (Corn, Canola, and/or Sunflower Oil)",
+    "Salt",
+    "Lime"
+  ],
+  "allergens": [],
+  "nutrition_facts": {
+    "serving_size": "1 oz (28g/About 12 chips)",
+    "servings_per_container": 10,
+    "calories": 140,
+    "total_fat": {"value": 7, "dv": 9},
+    "saturated_fat": {"value": 1, "dv": 5},
+    "trans_fat": 0,
+    "cholesterol": {"value": 0, "dv": 0},
+    "sodium": {"value": 115, "dv": 5},
+    "total_carb": {"value": 19, "dv": 7},
+    "fiber": {"value": 1, "dv": 4},
+    "total_sugars": 0,
+    "added_sugars": {"value": 0, "dv": 0},
+    "protein": 2,
+    "vitamin_d": {"value": 0, "dv": 0},
+    "calcium": {"value": 20, "dv": 2},
+    "iron": {"value": 0.4, "dv": 2},
+    "potassium": {"value": 40, "dv": 1}
+  },
+  "manufacturer": {
+    "name": "Crispy Snacks Co.",
+    "city": "Dallas",
+    "state": "TX",
+    "zip": "75201",
+    "phone": "1-800-555-CHIP",
+    "website": "www.crispysnacks.com"
+  },
+  "is_bioengineered": true,
+  "be_disclosure_type": "contains_bioengineered_ingredients",
+  "storage_instructions": "Store in a cool, dry place. Reseal bag after opening.",
+  "best_before": "08/15/2026",
+  "lot_code": "TX2026-0218",
+  "upc_code": "0 44444 55555 6",
+  "brand_name": "CRISPY",
+  "brand_tagline": "Authentic Taste Since 1975",
+  "product_description": "Restaurant Style Tortilla Chips",
+  "product_variant": "Lightly Salted",
+  "product_type": "TORTILLA CHIPS",
+  "product_emoji": "🌽"
+}

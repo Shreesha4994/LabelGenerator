@@ -1,0 +1,56 @@
+{
+  "product_name": "Energy Drink Zero Sugar",
+  "category": "packaged_food",
+  "brand_name": "PowerBoost",
+  "product_description": "Sugar-Free Energy Drink with Caffeine",
+  "net_quantity": {"value": 500, "unit": "ml"},
+  "ingredients": [
+    {"name": "Carbonated Water", "percentage": 95},
+    {"name": "Taurine", "percentage": 0.4},
+    {"name": "Caffeine", "percentage": 0.03},
+    {"name": "Acidity Regulator", "e_number": "E330", "functional_class": "Acidity Regulator"},
+    {"name": "Sweetener", "e_number": "E951", "functional_class": "Sweetener"},
+    {"name": "Sweetener", "e_number": "E950", "functional_class": "Sweetener"},
+    {"name": "Colour", "e_number": "E150d", "functional_class": "Colour"},
+    {"name": "Flavourings"},
+    {"name": "Niacin (Vitamin B3)"},
+    {"name": "Pantothenic Acid (Vitamin B5)"},
+    {"name": "Vitamin B6"},
+    {"name": "Vitamin B12"}
+  ],
+  "allergens": [],
+  "precautionary_allergens": ["milk", "soy"],
+  "nutrition_per_100g": {
+    "energy_kj": 12,
+    "energy_kcal": 3,
+    "fat": 0,
+    "saturates": 0,
+    "carbohydrate": 0,
+    "sugars": 0,
+    "protein": 0,
+    "salt": 0.1
+  },
+  "date_type": "best_before",
+  "best_before": "31/12/2027",
+  "lot_number": "ED2026045",
+  "storage_conditions": "Store in a cool, dry place. Best served chilled. Once opened, consume within 24 hours.",
+  "business_operator": {
+    "name": "PowerBoost Beverages GmbH",
+    "address": "Industriestraße 45, 80339 München, Germany",
+    "phone": "+49 89 555 1234",
+    "website": "www.powerboost.de"
+  },
+  "country_of_origin": "Germany",
+  "ean_code": "4 012345 678901",
+  
+  "instructions_for_use": "Shake well before opening. Serve chilled. Do not mix with alcohol. Maximum 2 cans per day recommended.",
+  
+  "caffeine_content": 32,
+  
+  "contains_sweeteners": true,
+  "contains_aspartame": true,
+  "contains_polyols": false,
+  "sweetener_names": "Aspartame (E951), Acesulfame K (E950)",
+  
+  "packaged_in_protective_atmosphere": true
+}

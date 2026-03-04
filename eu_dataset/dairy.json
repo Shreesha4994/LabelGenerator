@@ -1,0 +1,47 @@
+{
+  "product_name": "Greek Style Yogurt",
+  "category": "dairy",
+  "brand_name": "Olympus",
+  "product_description": "Authentic Greek Strained Yogurt",
+  "net_quantity": {
+    "value": 500,
+    "unit": "g"
+  },
+  "ingredients": [
+    {
+      "name": "Pasteurized Cow's Milk",
+      "percentage": 98,
+      "is_allergen": true
+    },
+    {
+      "name": "Live Yogurt Cultures",
+      "percentage": 2
+    }
+  ],
+  "allergens": [
+    "milk"
+  ],
+  "nutrition_per_100g": {
+    "energy_kj": 420,
+    "energy_kcal": 100,
+    "fat": 5,
+    "saturates": 3.5,
+    "carbohydrate": 4,
+    "sugars": 4,
+    "protein": 9,
+    "salt": 0.1
+  },
+  "fat_percentage": 5,
+  "date_type": "use_by",
+  "use_by": "05/03/2026",
+  "lot_number": "D2026048",
+  "storage_conditions": "Keep refrigerated at 2-6°C. Once opened, consume within 3 days",
+  "business_operator": {
+    "name": "Olympus Dairy SA",
+    "address": "Thessaloniki Industrial Zone, 57001 Greece",
+    "phone": "+30 231 0123456"
+  },
+  "country_of_origin": "Greece",
+  "pasteurization": "Pasteurized",
+  "ean_code": "5 201234 567890"
+}

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Cola Zero - Back Label (Nutritional Information)</title>
+    <!-- Google Fonts for multilingual support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;900&family=Noto+Sans+Devanagari:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Sans+SC:wght@400;700;900&family=Noto+Sans+KR:wght@400;700;900&family=Noto+Sans+Arabic:wght@400;700;900&family=Noto+Sans+Thai:wght@400;700;900&family=Noto+Sans+Tamil:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Multilingual font stack - supports Latin, Devanagari, Japanese, Chinese, Korean, Arabic, Thai, Tamil */
+            font-family: 'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans JP', 'Noto Sans SC', 'Noto Sans KR', 
+                         'Noto Sans Arabic', 'Noto Sans Thai', 'Noto Sans Tamil',
+                         'Arial', 'Helvetica Neue', 'Helvetica', 
+                         'Mangal', 'Kokila', /* Hindi fallback */
+                         'Hiragino Kaku Gothic Pro', 'Meiryo', 'MS Gothic', /* Japanese fallback */
+                         'Microsoft YaHei', 'PingFang SC', /* Chinese fallback */
+                         'Malgun Gothic', /* Korean fallback */
+                         sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            background: #f5f5f5;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .label-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        /* BACK LABEL - NUTRITIONAL INFORMATION */
+        .back-label {
+            width: 420px;
+            min-height: 650px;
+            background: white;
+            padding: 28px;
+        }
+
+        .back-title-section {
+            text-align: center;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #d35400;
+        }
+
+        .back-title-section h3 {
+            font-size: 22px;
+            color: #d35400;
+            font-weight: 900;
+        }
+
+        /* MANDATORY: Nutrition Information */
+        .nutrition-info-fssai {
+            border: 2px solid #d35400;
+            padding: 12px;
+            margin-bottom: 18px;
+        }
+
+        .nutrition-title-fssai {
+            font-size: 16px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            color: #d35400;
+        }
+
+        .nutrition-subtitle-fssai {
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #d35400;
+        }
+
+        .nutrition-table-fssai {
+            width: 100%;
+            font-size: 11px;
+        }
+
+        .nutrition-table-fssai td {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .nutrition-table-fssai tr:last-child td {
+            border-bottom: 2px solid #d35400;
+        }
+
+        .nutrition-table-fssai .nutrient-name {
+            font-weight: 700;
+        }
+
+        .nutrition-table-fssai .value-column {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        /* MANDATORY: Ingredients */
+        .ingredients-block {
+            margin-bottom: 16px;
+        }
+
+        .block-title {
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #d35400;
+            margin-bottom: 7px;
+            letter-spacing: 0.5px;
+        }
+
+        .ingredients-text {
+            font-size: 10px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* MANDATORY: Allergen Information */
+        .allergen-india {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 16px;
+        }
+
+        .allergen-india .block-title {
+            color: #856404;
+            margin-bottom: 5px;
+        }
+
+        .allergen-india-text {
+            font-size: 10px;
+            font-weight: 700;
+            color: #856404;
+            line-height: 1.5;
+        }
+
+        /* MANDATORY: FSSAI License */
+        .fssai-license {
+            background: #e8f5e9;
+            border: 3px solid #138808;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .fssai-logo {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .fssai-license-text {
+            font-size: 10px;
+            font-weight: 700;
+            color: #138808;
+            line-height: 1.4;
+        }
+
+        .fssai-number {
+            font-size: 14px;
+            font-weight: 900;
+            color: #138808;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .barcode-india {
+            text-align: center;
+            margin: 18px 0;
+        }
+
+        .barcode-india-graphic {
+            height: 65px;
+            background: repeating-linear-gradient(
+                90deg,
+                #000 0px, #000 2px,
+                #fff 2px, #fff 4px,
+                #000 4px, #000 5px,
+                #fff 5px, #fff 8px,
+                #000 8px, #000 10px,
+                #fff 10px, #fff 11px,
+                #000 11px, #000 14px,
+                #fff 14px, #fff 16px
+            );
+            border: 2px solid #000;
+            margin: 0 auto 6px;
+            width: 240px;
+        }
+
+        .barcode-india-number {
+            font-size: 13px;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        /* MANDATORY: Manufacturer Details */
+        .manufacturer-details {
+            font-size: 9px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 14px;
+        }
+
+        .manufacturer-details strong {
+            display: block;
+            margin-bottom: 3px;
+            color: #d35400;
+        }
+
+        .customer-care {
+            background: #f8f9fa;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        .customer-care-title {
+            font-size: 11px;
+            font-weight: 900;
+            color: #d35400;
+            margin-bottom: 5px;
+        }
+
+        .customer-care-info {
+            font-size: 10px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Category-specific sections */
+        .category-specific {
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 16px;
+        }
+
+        .category-specific .block-title {
+            color: #1565c0;
+        }
+
+        .category-specific-text {
+            font-size: 10px;
+            font-weight: 700;
+            color: #1565c0;
+            line-height: 1.5;
+        }
+
+        /* MANDATORY: Date Marking */
+        .footer-india {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            color: #666;
+            padding-top: 10px;
+            border-top: 2px solid #ddd;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer-india div {
+            font-weight: 700;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .label-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- BACK LABEL - NUTRITIONAL INFORMATION ONLY -->
+    <div class="label-container">
+        <div class="back-label">
+            <div class="back-title-section">
+                <h3>NUTRITIONAL INFORMATION</h3>
+            </div>
+
+            <!-- MANDATORY: Nutrition Information per 100g/100ml and per serve (FSSAI Regulation 5(3)(b)) -->
+            <div class="nutrition-info-fssai">
+                <div class="nutrition-title-fssai">Nutritional Information</div>
+                
+                <div class="nutrition-subtitle-fssai">
+                    Serving Size: 250ml (1 glass)
+                </div>
+                
+                
+                <table class="nutrition-table-fssai">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left; font-weight: 700; padding: 5px 0; border-bottom: 2px solid #d35400;"></th>
+                            <th style="text-align: right; font-weight: 700; padding: 5px 0; border-bottom: 2px solid #d35400;">Per 100m</th>
+                            
+                            <th style="text-align: right; font-weight: 700; padding: 5px 0; border-bottom: 2px solid #d35400;">Per Serve</th>
+                            <th style="text-align: right; font-weight: 700; padding: 5px 0; border-bottom: 2px solid #d35400;">%RDA*</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="nutrient-name">Energy</td>
+                            <td class="value-column">2 kcal</td>
+                            
+                            <td class="value-column">5.0 kcal</td>
+                            <td class="value-column">0%</td>
+                            
+                        </tr>
+                        <tr>
+                            <td class="nutrient-name">Protein</td>
+                            <td class="value-column">0g</td>
+                            
+                            <td class="value-column">0.0g</td>
+                            <td class="value-column">0%</td>
+                            
+                        </tr>
+                        <tr>
+                            <td class="nutrient-name">Carbohydrate</td>
+                            <td class="value-column">0.5g</td>
+                            
+                            <td class="value-column">1.2g</td>
+                            <td class="value-column">0%</td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <td style="padding-left: 15px;">Total Sugars</td>
+                            <td class="value-column">0g</td>
+                            
+                            <td class="value-column">0.0g</td>
+                            <td class="value-column">-</td>
+                            
+                        </tr>
+                        
+                        
+                        <tr>
+                            <td style="padding-left: 15px; font-weight: 600;">Added Sugars</td>
+                            <td class="value-column" style="font-weight: 600;">0g</td>
+                            
+                            <td class="value-column" style="font-weight: 600;">0.0g</td>
+                            <td class="value-column" style="font-weight: 600;">0%</td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <td class="nutrient-name">Total Fat</td>
+                            <td class="value-column">0g</td>
+                            
+                            <td class="value-column">0.0g</td>
+                            <td class="value-column">0%</td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <td style="padding-left: 15px;">Saturated Fat</td>
+                            <td class="value-column">0g</td>
+                            
+                            <td class="value-column">0.0g</td>
+                            <td class="value-column">0%</td>
+                            
+                        </tr>
+                        
+                        
+                        <tr>
+                            <td style="padding-left: 15px;">Trans Fat</td>
+                            <td class="value-column">0g</td>
+                            
+                            <td class="value-column">0.0g</td>
+                            <td class="value-column">0%</td>
+                            
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td class="nutrient-name">Dietary Fibre</td>
+                            <td class="value-column">0g</td>
+                            
+                            <td class="value-column">0.0g</td>
+                            <td class="value-column">0%</td>
+                            
+                        </tr>
+                        
+                        
+                        <tr>
+                            <td class="nutrient-name">Sodium</td>
+                            <td class="value-column">15mg</td>
+                            
+                            <td class="value-column">37.5mg</td>
+                            <td class="value-column">2%</td>
+                            
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                
+                <div style="font-size: 9px; color: #666; margin-top: 8px; font-style: italic;">
+                    *%RDA based on 2000 kcal energy, 67g total fat, 22g saturated fat, 2g trans fat, 50g added sugar, 2000mg sodium requirement for average adult per day.
+                </div>
+                
+            </div>
+
+            <!-- MANDATORY: Ingredients List (descending order by weight) -->
+            <div class="ingredients-block">
+                <div class="block-title">Ingredients:</div>
+                <div class="ingredients-text">
+                    Carbonated Water (94%), Colour (Caramel Colour (INS 150d)), Acidity Regulator (Phosphoric Acid (INS 338)), Sweetener (Aspartame (INS 951)), Sweetener (Acesulfame Potassium (INS 950)), Caffeine, Natural Flavours
+                </div>
+            </div>
+
+            <!-- MANDATORY: Allergen Information (Regulation 5(14)) -->
+            
+            <div class="allergen-india">
+                <div class="block-title">Allergen Information:</div>
+                <div class="allergen-india-text">
+                    Contains: Sulphite.
+                </div>
+            </div>
+            
+
+            <!-- Precautionary Allergen Warning (Regulation 5(14) proviso) -->
+            
+            <div style="background: #fff8e1; border: 2px solid #ff9800; border-radius: 6px; padding: 10px; margin-bottom: 16px;">
+                <div class="block-title" style="color: #e65100;">⚠️ May Contain:</div>
+                <div style="font-size: 10px; font-weight: 700; color: #e65100; line-height: 1.5;">
+                    May contain traces of: Milk, Soy
+                </div>
+            </div>
+            
+
+            <!-- SCHEDULE-II MANDATORY WARNINGS (Regulation 7(1)) -->
+            
+            <div style="background: #ffebee; border: 3px solid #c62828; border-radius: 6px; padding: 12px; margin-bottom: 16px;">
+                <div class="block-title" style="color: #c62828; font-size: 13px;">⚠️ IMPORTANT WARNINGS</div>
+                
+                <div style="font-size: 10px; font-weight: 700; color: #c62828; line-height: 1.6; padding: 3px 0; border-bottom: 1px solid #ffcdd2;">
+                    CONTAINS CAFFEINE (32mg/100ml)
+                </div>
+                
+                <div style="font-size: 10px; font-weight: 700; color: #c62828; line-height: 1.6; padding: 3px 0; border-bottom: 1px solid #ffcdd2;">
+                    This contains Aspartame & Acesulfame K
+                </div>
+                
+                <div style="font-size: 10px; font-weight: 700; color: #c62828; line-height: 1.6; padding: 3px 0; border-bottom: 1px solid #ffcdd2;">
+                    NOT RECOMMENDED FOR CHILDREN
+                </div>
+                
+                <div style="font-size: 10px; font-weight: 700; color: #c62828; line-height: 1.6; padding: 3px 0; border-bottom: 1px solid #ffcdd2;">
+                    NOT FOR PHENYLKETONURICS
+                </div>
+                
+                <div style="font-size: 10px; font-weight: 700; color: #c62828; line-height: 1.6; padding: 3px 0; border-bottom: 1px solid #ffcdd2;">
+                    CONTAINS NON-CALORIC SWEETENER
+                </div>
+                
+            </div>
+            
+
+            <!-- Category-Specific Information -->
+            
+
+            
+
+            
+            <div class="category-specific">
+                <div class="block-title">⚠️ Warning:</div>
+                <div class="category-specific-text">
+                    Contains caffeine. Not recommended for children and pregnant women.
+                </div>
+            </div>
+            
+
+            
+
+            
+
+            <!-- MANDATORY: FSSAI License Number -->
+            <div class="fssai-license">
+                <div class="fssai-logo">🛡️</div>
+                <div class="fssai-license-text">
+                    FSSAI License No.
+                </div>
+                <div class="fssai-number">10 0123 4567 8901</div>
+            </div>
+
+            <!-- Storage Instructions -->
+            <div class="ingredients-block">
+                <div class="block-title">Storage Instructions:</div>
+                <div class="ingredients-text">
+                    Store in a cool, dry place away from direct sunlight. Best served chilled. Once opened, consume within 24 hours.
+                    
+                    
+                </div>
+            </div>
+
+            <div class="barcode-india">
+                <div class="barcode-india-graphic"></div>
+                <div class="barcode-india-number">8 901234 567890</div>
+            </div>
+
+            <!-- MANDATORY: Manufacturer/Packer Details -->
+            <div class="manufacturer-details">
+                <strong>Manufactured & Packed by:</strong>
+                FizzPop Beverages Pvt. Ltd.<br>
+                Plot No. 45, Industrial Area Phase-II, Gurgaon, Haryana - 122001<br>
+                <br>Tel: +91-124-4567890
+                <br>Email: info@fizzpop.in
+                <br>
+                
+                <strong>Country of Origin:</strong> India<br>
+                
+            </div>
+
+            
+            <div class="customer-care">
+                <div class="customer-care-title">Customer Care</div>
+                <div class="customer-care-info">
+                    📞 1800-123-4567 (Toll Free)<br>
+                    📧 care@fizzpop.in<br>
+                    🌐 www.fizzpop.in
+                </div>
+            </div>
+            
+
+            <!-- MANDATORY: Date Marking and Batch Number -->
+            <div class="footer-india">
+                <div>Best Before: 2026-10-29</div>
+                <div>MFG Date: Feb 2026</div>
+                <div>Batch No: FP2026021801</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

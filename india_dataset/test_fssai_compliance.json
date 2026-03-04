@@ -1,0 +1,79 @@
+{
+  "product_name": "Energy Cola Zero",
+  "category": "beverage_carbonated",
+  "veg_status": "veg",
+  "brand_name": "FizzPop",
+  "product_variant": "Sugar-Free Energy Drink",
+  
+  "net_quantity": {
+    "value": 500,
+    "unit": "ml"
+  },
+  
+  "serving_size": {
+    "value": 250,
+    "unit": "ml",
+    "household_measure": "1 glass"
+  },
+  
+  "ingredients": [
+    {"name": "Carbonated Water", "percentage": 94},
+    {"name": "Caramel Colour", "ins_number": "150d", "class_name": "Colour"},
+    {"name": "Phosphoric Acid", "ins_number": "338", "class_name": "Acidity Regulator"},
+    {"name": "Aspartame", "ins_number": "951", "class_name": "Sweetener"},
+    {"name": "Acesulfame Potassium", "ins_number": "950", "class_name": "Sweetener"},
+    {"name": "Caffeine"},
+    {"name": "Natural Flavours"}
+  ],
+  
+  "allergens": ["sulphites"],
+  "precautionary_allergens": ["milk", "soy"],
+  
+  "nutrition_per_100g": {
+    "energy_kcal": 2,
+    "protein": 0,
+    "carbohydrates": 0.5,
+    "sugars": 0,
+    "added_sugars": 0,
+    "fat": 0,
+    "saturated_fat": 0,
+    "trans_fat": 0,
+    "fiber": 0,
+    "sodium": 15
+  },
+  
+  "contains_caffeine": true,
+  "caffeine_mg_per_100": 32,
+  
+  "contains_sweeteners": true,
+  "sweetener_type": "aspartame",
+  "sweetener_name": "Aspartame & Acesulfame K",
+  
+  "contains_non_caloric_sweetener": true,
+  
+  "fssai_license": "10012345678901",
+  
+  "manufacturer": {
+    "name": "FizzPop Beverages Pvt. Ltd.",
+    "address": "Plot No. 45, Industrial Area Phase-II, Gurgaon, Haryana - 122001",
+    "phone": "+91-124-4567890",
+    "email": "info@fizzpop.in"
+  },
+  
+  "customer_care": {
+    "phone": "1800-123-4567 (Toll Free)",
+    "email": "care@fizzpop.in",
+    "website": "www.fizzpop.in"
+  },
+  
+  "batch_number": "FP2026021801",
+  "mfg_date": "2026-02-01",
+  "best_before_months": 9,
+  
+  "mrp": 45.00,
+  "barcode": "8 901234 567890",
+  
+  "storage_instructions": "Store in a cool, dry place away from direct sunlight. Best served chilled. Once opened, consume within 24 hours.",
+  
+  "country_of_origin": "India"
+}

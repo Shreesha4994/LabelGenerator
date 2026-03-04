@@ -1,0 +1,74 @@
+{
+  "product_name": "Organic Granola Bars",
+  "category": "packaged_food",
+  "brand_name": "NatureBite",
+  "product_description": "Crunchy Oat & Honey Bars",
+  "net_quantity": {
+    "value": 200,
+    "unit": "g"
+  },
+  "ingredients": [
+    {
+      "name": "Rolled Oats",
+      "percentage": 45,
+      "is_allergen": true
+    },
+    {
+      "name": "Honey",
+      "percentage": 20
+    },
+    {
+      "name": "Almonds",
+      "percentage": 12,
+      "is_allergen": true
+    },
+    {
+      "name": "Sunflower Oil",
+      "percentage": 8
+    },
+    {
+      "name": "Rice Syrup",
+      "percentage": 7
+    },
+    {
+      "name": "Dried Cranberries",
+      "percentage": 5
+    },
+    {
+      "name": "Salt",
+      "percentage": 1
+    },
+    {
+      "name": "Emulsifier",
+      "e_number": "E322",
+      "functional_class": "Emulsifier"
+    }
+  ],
+  "allergens": [
+    "gluten",
+    "tree nuts"
+  ],
+  "nutrition_per_100g": {
+    "energy_kj": 1850,
+    "energy_kcal": 440,
+    "fat": 18,
+    "saturates": 2.5,
+    "carbohydrate": 58,
+    "sugars": 22,
+    "fibre": 6,
+    "protein": 9,
+    "salt": 0.3
+  },
+  "date_type": "best_before",
+  "best_before": "31/12/2026",
+  "lot_number": "L2026045",
+  "storage_conditions": "Store in a cool, dry place away from direct sunlight",
+  "business_operator": {
+    "name": "NatureBite GmbH",
+    "address": "Hauptstraße 123, 80331 München, Germany",
+    "phone": "+49 89 123456",
+    "website": "www.naturebite.de"
+  },
+  "country_of_origin": "Germany",
+  "ean_code": "4 012345 678901"
+}

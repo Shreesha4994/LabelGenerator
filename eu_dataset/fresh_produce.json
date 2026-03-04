@@ -1,0 +1,42 @@
+{
+  "product_name": "Valencia Oranges",
+  "category": "fresh_produce",
+  "brand_name": "SunCitrus",
+  "product_description": "Premium Spanish Oranges",
+  "net_quantity": {
+    "value": 1,
+    "unit": "kg"
+  },
+  "ingredients": [
+    {
+      "name": "Fresh Oranges (Citrus sinensis)",
+      "percentage": 100
+    }
+  ],
+  "allergens": [],
+  "nutrition_per_100g": {
+    "energy_kj": 197,
+    "energy_kcal": 47,
+    "fat": 0.1,
+    "saturates": 0,
+    "carbohydrate": 12,
+    "sugars": 9,
+    "fibre": 2.4,
+    "protein": 0.9,
+    "salt": 0
+  },
+  "variety": "Valencia Late",
+  "class": "Class I",
+  "size": "Medium (70-80mm)",
+  "date_type": "best_before",
+  "best_before": "28/02/2026",
+  "lot_number": "P2026007",
+  "storage_conditions": "Store at room temperature or refrigerate for longer freshness",
+  "business_operator": {
+    "name": "SunCitrus Cooperativa",
+    "address": "Carretera Valencia 45, 46001 Valencia, Spain",
+    "phone": "+34 96 123 4567"
+  },
+  "country_of_origin": "Spain",
+  "ean_code": "8 412345 678901"
+}

@@ -2,6 +2,7 @@
 """
 Flask API Service for Food Label Generation
 Supports India (FSSAI), US (FDA/USDA), and EU (Regulation 1169/2011)
+With Translation Support via SAP Translation Hub
 """
 
 from flask import Flask, request, jsonify
@@ -14,6 +15,8 @@ from pathlib import Path
 from label_generator import IndiaLabelGenerator, FSSAIValidator
 from label_generator_us import USLabelGenerator, FDAValidator
 from label_generator_eu import EULabelGenerator, EUValidator
+from ai_label_front_generator import AIFrontLabelGenerator
+from label_translator import LabelTranslator
 
 app = Flask(__name__)
 
@@ -31,6 +34,10 @@ app.config['MAX_CONTENT_LENGTH'] = int(os.getenv("MAX_CONTENT_LENGTH", 16 * 1024
 app.config['JSON_SORT_KEYS'] = False
 
 
+# Initialize translator
+translator = LabelTranslator()
+
+
 @app.route('/api/health', methods=['GET'])
 def health_check():
     """Health check endpoint"""
@@ -38,8 +45,21 @@ def health_check():
         "success": True,
         "status": "healthy",
         "service": "Food Label Generator API",
-        "version": "1.0.0",
-        "regions": ["india", "us", "eu"]
+        "version": "1.1.0",
+        "regions": ["india", "us", "eu"],
+        "features": ["label_generation", "translation"],
+        "supported_languages": list(translator.get_supported_languages().keys())
+    }), 200
+
+
+@app.route('/api/languages', methods=['GET'])
+def get_supported_languages():
+    """Get list of supported translation languages"""
+    return jsonify({
+        "success": True,
+        "languages": translator.get_supported_languages(),
+        "source_language": "en-US",
+        "usage": "Pass 'translate': true and 'target_language': '<code>' in your request"
     }), 200
 
 
@@ -77,17 +97,49 @@ def generate_india_label():
                 "region": "india"
             }), 400
         
-        # Generate label
-        generator = IndiaLabelGenerator()
-        html = generator.generate(product_data)
+        # Generate AI front label
+        ai_generator = AIFrontLabelGenerator(country='india')
+        front_html = ai_generator.generate_front_label(product_data)
         
-        return jsonify({
+        # Generate template back label
+        back_generator = IndiaLabelGenerator()
+        back_html = back_generator.generate(product_data)
+        
+        # Check if translation is requested
+        translate = product_data.get("translate", False)
+        target_language = product_data.get("target_language", "hi-IN")
+        
+        response_data = {
             "success": True,
-            "html": html,
+            "front_label_html": front_html,
+            "back_label_html": back_html,
             "product_name": product_data.get("product_name", "Unknown"),
             "region": "india",
             "category": product_data.get("category", "Unknown")
-        }), 200
+        }
+        
+        # Translate if requested
+        if translate:
+            if not translator.is_language_supported(target_language):
+                return jsonify({
+                    "success": False,
+                    "error": f"Unsupported language: {target_language}",
+                    "supported_languages": list(translator.get_supported_languages().keys())
+                }), 400
+            
+            try:
+                translated_front = translator.translate_html_label(front_html, 'en-US', target_language)
+                translated_back = translator.translate_html_label(back_html, 'en-US', target_language)
+                
+                response_data["translated_front_label_html"] = translated_front
+                response_data["translated_back_label_html"] = translated_back
+                response_data["translation_language"] = target_language
+                response_data["translation_language_name"] = translator.get_supported_languages().get(target_language)
+            except Exception as e:
+                app.logger.error(f"Translation error: {str(e)}")
+                response_data["translation_error"] = str(e)
+        
+        return jsonify(response_data), 200
         
     except ValueError as e:
         return jsonify({
@@ -139,17 +191,49 @@ def generate_us_label():
                 "region": "us"
             }), 400
         
-        # Generate label
-        generator = USLabelGenerator()
-        html = generator.generate(product_data)
+        # Generate AI front label
+        ai_generator = AIFrontLabelGenerator(country='us')
+        front_html = ai_generator.generate_front_label(product_data)
         
-        return jsonify({
+        # Generate template back label
+        back_generator = USLabelGenerator()
+        back_html = back_generator.generate(product_data)
+        
+        # Check if translation is requested
+        translate = product_data.get("translate", False)
+        target_language = product_data.get("target_language", "es-ES")
+        
+        response_data = {
             "success": True,
-            "html": html,
+            "front_label_html": front_html,
+            "back_label_html": back_html,
             "product_name": product_data.get("product_name", "Unknown"),
             "region": "us",
             "category": product_data.get("category", "Unknown")
-        }), 200
+        }
+        
+        # Translate if requested
+        if translate:
+            if not translator.is_language_supported(target_language):
+                return jsonify({
+                    "success": False,
+                    "error": f"Unsupported language: {target_language}",
+                    "supported_languages": list(translator.get_supported_languages().keys())
+                }), 400
+            
+            try:
+                translated_front = translator.translate_html_label(front_html, 'en-US', target_language)
+                translated_back = translator.translate_html_label(back_html, 'en-US', target_language)
+                
+                response_data["translated_front_label_html"] = translated_front
+                response_data["translated_back_label_html"] = translated_back
+                response_data["translation_language"] = target_language
+                response_data["translation_language_name"] = translator.get_supported_languages().get(target_language)
+            except Exception as e:
+                app.logger.error(f"Translation error: {str(e)}")
+                response_data["translation_error"] = str(e)
+        
+        return jsonify(response_data), 200
         
     except ValueError as e:
         return jsonify({
@@ -201,17 +285,49 @@ def generate_eu_label():
                 "region": "eu"
             }), 400
         
-        # Generate label
-        generator = EULabelGenerator()
-        html = generator.generate(product_data)
+        # Generate AI front label
+        ai_generator = AIFrontLabelGenerator(country='eu')
+        front_html = ai_generator.generate_front_label(product_data)
         
-        return jsonify({
+        # Generate template back label
+        back_generator = EULabelGenerator()
+        back_html = back_generator.generate(product_data)
+        
+        # Check if translation is requested
+        translate = product_data.get("translate", False)
+        target_language = product_data.get("target_language", "de-DE")
+        
+        response_data = {
             "success": True,
-            "html": html,
+            "front_label_html": front_html,
+            "back_label_html": back_html,
             "product_name": product_data.get("product_name", "Unknown"),
             "region": "eu",
             "category": product_data.get("category", "Unknown")
-        }), 200
+        }
+        
+        # Translate if requested
+        if translate:
+            if not translator.is_language_supported(target_language):
+                return jsonify({
+                    "success": False,
+                    "error": f"Unsupported language: {target_language}",
+                    "supported_languages": list(translator.get_supported_languages().keys())
+                }), 400
+            
+            try:
+                translated_front = translator.translate_html_label(front_html, 'en-US', target_language)
+                translated_back = translator.translate_html_label(back_html, 'en-US', target_language)
+                
+                response_data["translated_front_label_html"] = translated_front
+                response_data["translated_back_label_html"] = translated_back
+                response_data["translation_language"] = target_language
+                response_data["translation_language_name"] = translator.get_supported_languages().get(target_language)
+            except Exception as e:
+                app.logger.error(f"Translation error: {str(e)}")
+                response_data["translation_error"] = str(e)
+        
+        return jsonify(response_data), 200
         
     except ValueError as e:
         return jsonify({
@@ -247,6 +363,7 @@ def not_found(error):
         "error": "Endpoint not found",
         "available_endpoints": [
             "GET /api/health",
+            "GET /api/languages",
             "POST /api/generate/india",
             "POST /api/generate/us",
             "POST /api/generate/eu"
@@ -282,15 +399,19 @@ if __name__ == '__main__':
     print(f"""
 ╔══════════════════════════════════════════════════════════╗
 ║   Food Label Generator API Service                       ║
-║   Version: 1.0.0                                         ║
+║   Version: 1.1.0 (with Translation Support)              ║
 ╠══════════════════════════════════════════════════════════╣
 ║   Server: http://{host}:{port}                      ║
 ║   Health: http://{host}:{port}/api/health           ║
 ╠══════════════════════════════════════════════════════════╣
 ║   Endpoints:                                             ║
+║   • GET  /api/languages       (Supported languages)     ║
 ║   • POST /api/generate/india  (FSSAI)                   ║
 ║   • POST /api/generate/us     (FDA/USDA)                ║
 ║   • POST /api/generate/eu     (EU Reg 1169/2011)        ║
+╠══════════════════════════════════════════════════════════╣
+║   Translation: Add "translate": true and                 ║
+║   "target_language": "de-DE" to your request            ║
 ╚══════════════════════════════════════════════════════════╝
     """)
     

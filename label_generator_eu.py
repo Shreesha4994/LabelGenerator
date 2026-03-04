@@ -149,7 +149,7 @@ class EULabelGenerator:
         
         # Format allergen list
         if 'allergens' in data and data['allergens']:
-            enriched['allergens_list'] = ', '.join(
+            enriched['allergens_formatted'] = ', '.join(
                 allergen.upper() for allergen in data['allergens']
             )
         
@@ -226,6 +226,7 @@ class EULabelGenerator:
             category_data['show_traceability'] = True
             if data.get('previously_frozen'):
                 category_data['show_previously_frozen'] = True
+                category_data['is_defrosted'] = True
         
         # Fish & Seafood
         elif category == 'fish_seafood':
@@ -268,16 +269,56 @@ class EULabelGenerator:
             category_data['is_infant_food'] = True
             category_data['show_preparation_instructions'] = True
         
+        # NEW: Precautionary allergen warnings (May contain traces)
+        if 'precautionary_allergens' in data:
+            category_data['precautionary_allergens'] = ', '.join(
+                allergen.upper() for allergen in data['precautionary_allergens']
+            )
+        
+        # NEW: Instructions for use
+        if 'instructions_for_use' in data:
+            category_data['instructions_for_use'] = data['instructions_for_use']
+        elif 'preparation_instructions' in data:
+            category_data['instructions_for_use'] = data['preparation_instructions']
+        
+        # NEW: Caffeine warning (for beverages with >150mg/L caffeine)
+        caffeine_content = data.get('caffeine_content', 0)
+        if caffeine_content > 15:  # >150mg/L = >15mg/100ml
+            category_data['show_caffeine_warning'] = True
+            category_data['caffeine_content'] = caffeine_content
+        
+        # NEW: Sweetener warnings
+        if data.get('contains_sweeteners'):
+            category_data['show_sweetener_warning'] = True
+            category_data['contains_aspartame'] = data.get('contains_aspartame', False)
+            category_data['contains_polyols'] = data.get('contains_polyols', False)
+            category_data['sweetener_names'] = data.get('sweetener_names', '')
+        
+        # NEW: Defrosted indicator
+        if data.get('is_defrosted') or data.get('previously_frozen'):
+            category_data['is_defrosted'] = True
+        
+        # NEW: Protective atmosphere
+        if data.get('packaged_in_protective_atmosphere') or data.get('map_packaging'):
+            category_data['packaged_in_protective_atmosphere'] = True
+        
         return category_data
     
     def _get_default_template(self) -> Template:
-        """Return default Jinja2 template"""
-        template_path = Path(__file__).parent / 'label_template_eu.html'
+        """Return default Jinja2 template - BACK LABEL ONLY (no front)"""
+        # Use back-only template (front is now AI-generated separately)
+        template_path = Path(__file__).parent / 'label_template_eu_back_only.html'
         if template_path.exists():
             with open(template_path, 'r', encoding='utf-8') as f:
                 return Template(f.read())
         else:
-            raise FileNotFoundError("label_template_eu.html not found. Please create it first.")
+            # Fallback to original template if back-only doesn't exist
+            template_path = Path(__file__).parent / 'label_template_eu.html'
+            if template_path.exists():
+                with open(template_path, 'r', encoding='utf-8') as f:
+                    return Template(f.read())
+            else:
+                raise FileNotFoundError("label_template_eu_back_only.html not found. Please create it first.")
 
 
 def main():

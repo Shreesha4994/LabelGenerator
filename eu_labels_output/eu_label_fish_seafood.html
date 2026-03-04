@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlantic Salmon Fillet - Nutrition Declaration (EU)</title>
+    <!-- Google Fonts for multilingual support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;900&family=Noto+Sans+Devanagari:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Sans+SC:wght@400;700;900&family=Noto+Sans+KR:wght@400;700;900&family=Noto+Sans+Arabic:wght@400;700;900&family=Noto+Sans+Thai:wght@400;700;900&family=Noto+Sans+Tamil:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Multilingual font stack - supports Latin, Devanagari, Japanese, Chinese, Korean, Arabic, Thai, Tamil */
+            font-family: 'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans JP', 'Noto Sans SC', 'Noto Sans KR', 
+                         'Noto Sans Arabic', 'Noto Sans Thai', 'Noto Sans Tamil',
+                         'Segoe UI', 'Arial', 'Helvetica', 
+                         'Mangal', 'Kokila', /* Hindi fallback */
+                         'Hiragino Kaku Gothic Pro', 'Meiryo', 'MS Gothic', /* Japanese fallback */
+                         'Microsoft YaHei', 'PingFang SC', /* Chinese fallback */
+                         'Malgun Gothic', /* Korean fallback */
+                         sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            background: #f5f5f5;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .label-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            width: 400px;
+        }
+
+        /* EU NUTRITION DECLARATION */
+        .nutrition-declaration {
+            padding: 20px;
+            border-bottom: 2px solid #003399;
+        }
+
+        .nutrition-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #003399;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nutrition-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .nutrition-table th,
+        .nutrition-table td {
+            padding: 8px 4px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .nutrition-table th {
+            background: #f8f9fa;
+            font-weight: 700;
+            color: #003399;
+        }
+
+        .nutrition-table .value-col {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .nutrition-table .ri-col {
+            text-align: right;
+            color: #666;
+            font-size: 11px;
+        }
+
+        .nutrition-table .indent {
+            padding-left: 20px;
+        }
+
+        .ri-note {
+            font-size: 10px;
+            color: #666;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* INGREDIENTS SECTION */
+        .ingredients-section {
+            padding: 16px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #003399;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .ingredients-text {
+            font-size: 11px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* ALLERGEN SECTION - EU requires bold allergens */
+        .allergen-section {
+            padding: 12px 20px;
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            margin: 16px 20px;
+            border-radius: 4px;
+        }
+
+        .allergen-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #856404;
+            margin-bottom: 4px;
+        }
+
+        .allergen-text {
+            font-size: 11px;
+            font-weight: 700;
+            color: #856404;
+        }
+
+        /* ORIGIN SECTION */
+        .origin-section {
+            padding: 12px 20px;
+            background: #e8f4fd;
+            border-left: 4px solid #003399;
+            margin: 0 20px 16px;
+        }
+
+        .origin-text {
+            font-size: 11px;
+            color: #003399;
+        }
+
+        /* MANUFACTURER INFO */
+        .manufacturer-section {
+            padding: 16px 20px;
+            font-size: 10px;
+            line-height: 1.5;
+            color: #333;
+            border-top: 1px solid #ddd;
+        }
+
+        .manufacturer-section strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #003399;
+        }
+
+        /* STORAGE & DATES */
+        .storage-section {
+            padding: 12px 20px;
+            background: #f8f9fa;
+            font-size: 10px;
+        }
+
+        .storage-title {
+            font-weight: 700;
+            color: #003399;
+            margin-bottom: 4px;
+        }
+
+        .storage-text {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* BARCODE */
+        .barcode-section {
+            text-align: center;
+            padding: 16px 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .barcode-graphic {
+            height: 50px;
+            background: repeating-linear-gradient(
+                90deg,
+                #000 0px, #000 2px,
+                #fff 2px, #fff 4px,
+                #000 4px, #000 5px,
+                #fff 5px, #fff 8px
+            );
+            border: 1px solid #000;
+            margin: 0 auto 8px;
+            width: 180px;
+        }
+
+        .barcode-number {
+            font-size: 11px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+        }
+
+        /* FOOTER */
+        .footer-section {
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            color: #666;
+            border-top: 1px solid #ddd;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer-section div {
+            font-weight: 600;
+        }
+
+        /* PRECAUTIONARY ALLERGEN WARNING */
+        .precautionary-allergen {
+            padding: 10px 20px;
+            background: #fff8e1;
+            border: 2px solid #ff9800;
+            margin: 0 20px 16px;
+            border-radius: 4px;
+        }
+
+        .precautionary-allergen-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #e65100;
+            margin-bottom: 4px;
+        }
+
+        .precautionary-allergen-text {
+            font-size: 10px;
+            font-weight: 600;
+            color: #e65100;
+        }
+
+        /* INSTRUCTIONS FOR USE */
+        .instructions-section {
+            padding: 12px 20px;
+            background: #e3f2fd;
+            border-left: 4px solid #1976d2;
+            margin: 0 20px 16px;
+        }
+
+        .instructions-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #1565c0;
+            margin-bottom: 4px;
+        }
+
+        .instructions-text {
+            font-size: 10px;
+            color: #1565c0;
+            line-height: 1.5;
+        }
+
+        /* CAFFEINE WARNING */
+        .caffeine-warning {
+            padding: 10px 20px;
+            background: #ffebee;
+            border: 2px solid #c62828;
+            margin: 0 20px 16px;
+            border-radius: 4px;
+        }
+
+        .caffeine-warning-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #c62828;
+            margin-bottom: 4px;
+        }
+
+        .caffeine-warning-text {
+            font-size: 10px;
+            font-weight: 600;
+            color: #c62828;
+        }
+
+        /* SWEETENER WARNING */
+        .sweetener-warning {
+            padding: 10px 20px;
+            background: #fce4ec;
+            border: 2px solid #ad1457;
+            margin: 0 20px 16px;
+            border-radius: 4px;
+        }
+
+        .sweetener-warning-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #ad1457;
+            margin-bottom: 4px;
+        }
+
+        .sweetener-warning-text {
+            font-size: 10px;
+            font-weight: 600;
+            color: #ad1457;
+        }
+
+        /* DEFROSTED INDICATOR */
+        .defrosted-indicator {
+            padding: 10px 20px;
+            background: #e1f5fe;
+            border: 2px solid #0288d1;
+            margin: 0 20px 16px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .defrosted-indicator-text {
+            font-size: 12px;
+            font-weight: 700;
+            color: #01579b;
+        }
+
+        /* PROTECTIVE ATMOSPHERE */
+        .protective-atmosphere {
+            padding: 8px 20px;
+            background: #f3e5f5;
+            border-left: 4px solid #7b1fa2;
+            margin: 0 20px 16px;
+        }
+
+        .protective-atmosphere-text {
+            font-size: 10px;
+            font-weight: 600;
+            color: #6a1b9a;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .label-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="label-container">
+        <!-- EU NUTRITION DECLARATION (Regulation 1169/2011) -->
+        <div class="nutrition-declaration">
+            <div class="nutrition-title">Nutrition Declaration</div>
+            
+            <table class="nutrition-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="value-col">Per 100g</th>
+                        <th class="ri-col">%RI*</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energy</td>
+                        <td class="value-col">920kJ / 220kcal</td>
+                        <td class="ri-col">20%</td>
+                    </tr>
+                    <tr>
+                        <td>Fat</td>
+                        <td class="value-col">13</td>
+                        <td class="ri-col">26%</td>
+                    </tr>
+                    <tr>
+                        <td class="indent">of which saturates</td>
+                        <td class="value-col">2.5</td>
+                        <td class="ri-col">40%</td>
+                    </tr>
+                    <tr>
+                        <td>Carbohydrate</td>
+                        <td class="value-col">0</td>
+                        <td class="ri-col">21%</td>
+                    </tr>
+                    <tr>
+                        <td class="indent">of which sugars</td>
+                        <td class="value-col">0</td>
+                        <td class="ri-col">28%</td>
+                    </tr>
+                    <tr>
+                        <td>Fibre</td>
+                        <td class="value-col">3g</td>
+                        <td class="ri-col">-</td>
+                    </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td class="value-col">25</td>
+                        <td class="ri-col">12%</td>
+                    </tr>
+                    <tr>
+                        <td>Salt</td>
+                        <td class="value-col">0.1</td>
+                        <td class="ri-col">8%</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="ri-note">*Reference intake of an average adult (8400kJ/2000kcal)</div>
+        </div>
+
+        <!-- INGREDIENTS (allergens in BOLD per EU regulation) -->
+        <div class="ingredients-section">
+            <div class="section-title">Ingredients</div>
+            <div class="ingredients-text">
+                <strong>Atlantic Salmon (Salmo salar) (100%)</strong>
+            </div>
+        </div>
+
+        <!-- ALLERGENS -->
+        
+        <div class="allergen-section">
+            <div class="allergen-title">Allergens:</div>
+            <div class="allergen-text">FISH</div>
+        </div>
+        
+
+        <!-- PRECAUTIONARY ALLERGEN WARNING (May contain traces) -->
+        
+
+        <!-- COUNTRY OF ORIGIN -->
+        
+        <div class="origin-section">
+            <div class="origin-text">
+                <strong>Country of Origin:</strong> Norway<br>
+                
+            </div>
+        </div>
+        
+
+        <!-- INSTRUCTIONS FOR USE (Article 9 - FIC Regulation) -->
+        
+
+        <!-- CAFFEINE WARNING (Annex III - FIC Regulation) -->
+        
+
+        <!-- SWEETENER WARNING (Annex III - FIC Regulation) -->
+        
+
+        <!-- DEFROSTED INDICATOR (Article 17 - FIC Regulation) -->
+        
+
+        <!-- PROTECTIVE ATMOSPHERE (Annex III - FIC Regulation) -->
+        
+
+        <!-- STORAGE INSTRUCTIONS -->
+        <div class="storage-section">
+            <div class="storage-title">Storage Instructions</div>
+            <div class="storage-text">
+                Keep refrigerated at 0-2°C. Consume on day of purchase
+            </div>
+        </div>
+
+        <!-- MANUFACTURER/OPERATOR INFO -->
+        <div class="manufacturer-section">
+            <strong>Food Business Operator:</strong>
+            OceanCatch AS<br>
+            Havnegata 12, 5003 Bergen, Norway<br>
+            
+            Tel: +47 55 123456<br>
+            
+        </div>
+
+        <!-- BARCODE -->
+        <div class="barcode-section">
+            <div class="barcode-graphic"></div>
+            <div class="barcode-number">5 012345 678901</div>
+        </div>
+
+        <!-- FOOTER - Dates and Batch -->
+        <div class="footer-section">
+            <div>Best Before: See packaging</div>
+            <div>Lot: L12345</div>
+            <div>Net: 250g</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{
+  "product_name": "Organic Extra Virgin Olive Oil",
+  "category": "packaged_food",
+  "net_quantity": {
+    "us_value": 16.9,
+    "us_unit": "fl oz",
+    "metric_value": 500,
+    "metric_unit": "ml"
+  },
+  "ingredients": [
+    "Organic Extra Virgin Olive Oil"
+  ],
+  "allergens": [],
+  "nutrition_facts": {
+    "serving_size": "1 Tbsp (15 mL)",
+    "servings_per_container": 33,
+    "calories": 120,
+    "total_fat": {"value": 14, "dv": 18},
+    "saturated_fat": {"value": 2, "dv": 10},
+    "trans_fat": 0,
+    "cholesterol": {"value": 0, "dv": 0},
+    "sodium": {"value": 0, "dv": 0},
+    "total_carb": {"value": 0, "dv": 0},
+    "fiber": {"value": 0, "dv": 0},
+    "total_sugars": 0,
+    "added_sugars": {"value": 0, "dv": 0},
+    "protein": 0,
+    "vitamin_d": {"value": 0, "dv": 0},
+    "calcium": {"value": 0, "dv": 0},
+    "iron": {"value": 0, "dv": 0},
+    "potassium": {"value": 0, "dv": 0}
+  },
+  "manufacturer": {
+    "name": "Mediterranean Harvest LLC",
+    "city": "Napa",
+    "state": "CA",
+    "zip": "94558",
+    "phone": "1-800-555-OLIV",
+    "website": "www.mediterraneanharvest.com"
+  },
+  "is_organic": true,
+  "organic_level": "100_percent",
+  "organic_certifier": {
+    "name": "California Certified Organic Farmers (CCOF)",
+    "code": "CCOF"
+  },
+  "is_imported": true,
+  "country_of_origin": "Italy",
+  "nutrition_claims": [
+    "cholesterol_free",
+    "sodium_free"
+  ],
+  "health_claims": [
+    "fat_cancer"
+  ],
+  "storage_instructions": "Store in a cool, dark place. Best used within 18 months of harvest date.",
+  "best_before": "12/2027",
+  "lot_code": "IT2026-EVOO-0218",
+  "upc_code": "0 33333 22222 1",
+  "brand_name": "MEDITERRANEAN HARVEST",
+  "brand_tagline": "Premium Organic Oils Since 1998",
+  "product_description": "Cold Pressed Extra Virgin Olive Oil",
+  "product_variant": "First Cold Press",
+  "product_type": "OLIVE OIL",
+  "product_emoji": "🫒",
+  "show_nongmo": true,
+  "show_kosher": true
+}

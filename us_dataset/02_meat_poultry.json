@@ -1,0 +1,51 @@
+{
+  "product_name": "Premium Ground Beef",
+  "category": "meat_poultry_egg",
+  "net_quantity": {
+    "us_value": 1,
+    "us_unit": "lb",
+    "metric_value": 454,
+    "metric_unit": "g"
+  },
+  "ingredients": [
+    "Ground Beef"
+  ],
+  "allergens": [],
+  "nutrition_facts": {
+    "serving_size": "4 oz (112g)",
+    "servings_per_container": 4,
+    "calories": 290,
+    "total_fat": {"value": 23, "dv": 29},
+    "saturated_fat": {"value": 9, "dv": 45},
+    "trans_fat": 1,
+    "cholesterol": {"value": 80, "dv": 27},
+    "sodium": {"value": 75, "dv": 3},
+    "total_carb": {"value": 0, "dv": 0},
+    "fiber": {"value": 0, "dv": 0},
+    "total_sugars": 0,
+    "added_sugars": {"value": 0, "dv": 0},
+    "protein": 19,
+    "vitamin_d": {"value": 0, "dv": 0},
+    "calcium": {"value": 18, "dv": 1},
+    "iron": {"value": 2.5, "dv": 14},
+    "potassium": {"value": 305, "dv": 6}
+  },
+  "manufacturer": {
+    "name": "American Beef Company",
+    "city": "Omaha",
+    "state": "NE",
+    "zip": "68102",
+    "phone": "1-800-555-BEEF"
+  },
+  "usda_establishment_number": "12345",
+  "safe_handling_instructions": "This product was prepared from inspected and passed meat. Some food products may contain bacteria that could cause illness if the product is mishandled or cooked improperly. For your protection, follow these safe handling instructions: Keep refrigerated or frozen. Thaw in refrigerator or microwave. Keep raw meat separate from other foods. Wash working surfaces, utensils, and hands after touching raw meat. Cook thoroughly to internal temperature of 160°F. Keep hot foods hot. Refrigerate leftovers immediately or discard.",
+  "storage_temperature": "Keep Refrigerated at 40°F or below",
+  "best_before": "See package for sell-by date",
+  "lot_code": "2026NE0218",
+  "upc_code": "0 98765 43210 1",
+  "brand_name": "AMERICAN BEEF",
+  "brand_tagline": "Quality Beef Since 1952",
+  "product_description": "80% Lean / 20% Fat",
+  "product_type": "GROUND BEEF",
+  "product_emoji": "🥩"
+}

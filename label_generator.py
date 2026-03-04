@@ -27,6 +27,47 @@ class FSSAIValidator:
         'fortified', 'organic', 'frozen', 'ready_to_eat', 'imported'
     ]
     
+    # FSSAI RDA values (Regulation 5(3)(b))
+    # Based on 2000kcal energy requirement for average adult per day
+    RDA_VALUES = {
+        'energy_kcal': 2000,
+        'protein': 50,  # g (general reference)
+        'carbohydrates': 300,  # g (general reference)
+        'fat': 67,  # g
+        'saturated_fat': 22,  # g
+        'trans_fat': 2,  # g
+        'added_sugars': 50,  # g
+        'sodium': 2000,  # mg (5g salt)
+        'cholesterol': 300,  # mg (general reference)
+        'fiber': 25,  # g (general reference)
+    }
+    
+    # Schedule-II allergen names mapping (Regulation 5(14))
+    ALLERGEN_DISPLAY_NAMES = {
+        'gluten': 'Wheat',  # Cereals containing gluten
+        'wheat': 'Wheat',
+        'rye': 'Wheat',
+        'barley': 'Wheat',
+        'oats': 'Wheat',
+        'crustaceans': 'Crustacean',
+        'milk': 'Milk',
+        'dairy': 'Milk',
+        'eggs': 'Egg',
+        'egg': 'Egg',
+        'fish': 'Fish',
+        'peanuts': 'Nut',
+        'peanut': 'Nut',
+        'tree nuts': 'Nut',
+        'almonds': 'Nut',
+        'cashews': 'Nut',
+        'walnuts': 'Nut',
+        'pistachios': 'Nut',
+        'soy': 'Soy',
+        'soybeans': 'Soy',
+        'sulphites': 'Sulphite',
+        'sulphite': 'Sulphite',
+    }
+    
     @staticmethod
     def validate(data: Dict[str, Any]) -> tuple[bool, List[str]]:
         """Validate product data and return (is_valid, errors)"""
@@ -131,11 +172,28 @@ class IndiaLabelGenerator:
         # Format ingredients with additives
         enriched['ingredients_formatted'] = self._format_ingredients(data['ingredients'])
         
-        # Format allergens
+        # Format allergens using FSSAI-compliant names (Regulation 5(14))
         if 'allergens' in data and data['allergens']:
-            enriched['allergens_formatted'] = ', '.join(
-                allergen.upper() for allergen in data['allergens']
-            )
+            fssai_allergens = []
+            for allergen in data['allergens']:
+                # Map to FSSAI-compliant display name
+                display_name = FSSAIValidator.ALLERGEN_DISPLAY_NAMES.get(
+                    allergen.lower(), allergen.upper()
+                )
+                if display_name not in fssai_allergens:
+                    fssai_allergens.append(display_name)
+            enriched['allergens_formatted'] = ', '.join(fssai_allergens)
+        
+        # Format precautionary allergens (Regulation 5(14) proviso)
+        if 'precautionary_allergens' in data and data['precautionary_allergens']:
+            precautionary = []
+            for allergen in data['precautionary_allergens']:
+                display_name = FSSAIValidator.ALLERGEN_DISPLAY_NAMES.get(
+                    allergen.lower(), allergen.upper()
+                )
+                if display_name not in precautionary:
+                    precautionary.append(display_name)
+            enriched['precautionary_allergens_formatted'] = ', '.join(precautionary)
         
         # Add category-specific data
         enriched.update(self._get_category_specific_data(data))
@@ -144,7 +202,110 @@ class IndiaLabelGenerator:
         fssai = str(data['fssai_license'])
         enriched['fssai_license_formatted'] = f"{fssai[:2]} {fssai[2:6]} {fssai[6:10]} {fssai[10:]}"
         
+        # Calculate %RDA per serve (Regulation 5(3)(b))
+        enriched.update(self._calculate_rda_per_serve(data))
+        
+        # Add Schedule-II mandatory warnings (Regulation 7(1))
+        enriched.update(self._get_schedule_ii_warnings(data))
+        
         return enriched
+    
+    def _calculate_rda_per_serve(self, data: Dict[str, Any]) -> Dict[str, Any]:
+        """Calculate %RDA per serve based on FSSAI Regulation 5(3)(b)"""
+        rda_data = {}
+        nutrition = data.get('nutrition_per_100g', {})
+        serving_size = data.get('serving_size', {})
+        
+        # Get serving size value (default to 100g if not specified)
+        serve_value = serving_size.get('value', 100)
+        serve_unit = serving_size.get('unit', 'g')
+        household_measure = serving_size.get('household_measure', '')
+        
+        # Store serving size info
+        rda_data['serving_size_value'] = serve_value
+        rda_data['serving_size_unit'] = serve_unit
+        rda_data['serving_size_household'] = household_measure
+        rda_data['has_serving_size'] = 'serving_size' in data
+        
+        # Calculate multiplier (serving size / 100)
+        multiplier = serve_value / 100.0
+        
+        # Calculate nutrition per serve
+        nutrition_per_serve = {}
+        rda_percentages = {}
+        
+        for nutrient, value in nutrition.items():
+            if isinstance(value, (int, float)):
+                # Calculate per serve value
+                per_serve = round(value * multiplier, 1)
+                nutrition_per_serve[nutrient] = per_serve
+                
+                # Calculate %RDA if RDA value exists
+                if nutrient in FSSAIValidator.RDA_VALUES:
+                    rda_value = FSSAIValidator.RDA_VALUES[nutrient]
+                    rda_percent = round((per_serve / rda_value) * 100, 0)
+                    rda_percentages[f'{nutrient}_rda'] = int(rda_percent)
+        
+        rda_data['nutrition_per_serve'] = nutrition_per_serve
+        rda_data['rda_percentages'] = rda_percentages
+        
+        return rda_data
+    
+    def _get_schedule_ii_warnings(self, data: Dict[str, Any]) -> Dict[str, Any]:
+        """Generate Schedule-II mandatory warnings (Regulation 7(1))"""
+        warnings = {}
+        warning_messages = []
+        
+        # 1. Caffeine warning (Schedule-II 1.1(3))
+        if data.get('contains_caffeine', False):
+            caffeine_mg = data.get('caffeine_mg_per_100', 0)
+            warnings['show_caffeine_warning'] = True
+            warnings['caffeine_mg_per_100'] = caffeine_mg
+            warning_messages.append(f"CONTAINS CAFFEINE ({caffeine_mg}mg/100ml)")
+        
+        # 2. Artificial Sweetener warnings (Schedule-II 1.1(4))
+        if data.get('contains_sweeteners', False):
+            sweetener_type = data.get('sweetener_type', '').lower()
+            sweetener_name = data.get('sweetener_name', sweetener_type.title())
+            warnings['show_sweetener_warning'] = True
+            warnings['sweetener_name'] = sweetener_name
+            
+            # Base warning for all sweeteners
+            warning_messages.append(f"This contains {sweetener_name}")
+            warning_messages.append("NOT RECOMMENDED FOR CHILDREN")
+            
+            # Aspartame-specific warning
+            if sweetener_type in ['aspartame', 'aspartame-acesulfame']:
+                warnings['show_phenylketonurics_warning'] = True
+                warning_messages.append("NOT FOR PHENYLKETONURICS")
+        
+        # 3. MSG warning (Schedule-II 1.1(4))
+        if data.get('contains_msg', False):
+            warnings['show_msg_warning'] = True
+            warning_messages.append("This package contains added MONOSODIUM GLUTAMATE")
+            warning_messages.append("NOT RECOMMENDED FOR INFANTS BELOW 12 MONTHS AND PREGNANT WOMEN")
+        
+        # 4. Polyols warning (Schedule-II 1.1(1))
+        if data.get('contains_polyols', False):
+            polyol_percentage = data.get('polyol_percentage', 10)
+            if polyol_percentage >= 10:
+                warnings['show_polyols_warning'] = True
+                warning_messages.append("Polyols may have laxative effect")
+        
+        # 5. Milk powder warning (Schedule-II 2.3)
+        if data.get('category') == 'dairy' and data.get('is_milk_powder', False):
+            warnings['show_infant_warning'] = True
+            warning_messages.append("NOT TO BE USED FOR INFANTS BELOW SIX MONTHS")
+        
+        # 6. Non-caloric sweetener declaration (Schedule-II 1.1(4)(3))
+        if data.get('contains_non_caloric_sweetener', False):
+            warnings['show_non_caloric_warning'] = True
+            warning_messages.append("CONTAINS NON-CALORIC SWEETENER")
+        
+        warnings['schedule_ii_warnings'] = warning_messages
+        warnings['has_schedule_ii_warnings'] = len(warning_messages) > 0
+        
+        return warnings
     
     def _format_ingredients(self, ingredients: List[Dict[str, Any]]) -> str:
         """Format ingredients list with percentages and INS numbers"""
@@ -212,14 +373,20 @@ class IndiaLabelGenerator:
         return category_data
     
     def _get_default_template(self) -> Template:
-        """Return default Jinja2 template"""
-        # Template will be loaded from label_template.html
-        template_path = Path(__file__).parent / 'label_template.html'
+        """Return default Jinja2 template - BACK LABEL ONLY (no front)"""
+        # Use back-only template (front is now AI-generated separately)
+        template_path = Path(__file__).parent / 'label_template_back_only.html'
         if template_path.exists():
             with open(template_path, 'r', encoding='utf-8') as f:
                 return Template(f.read())
         else:
-            raise FileNotFoundError("label_template.html not found. Please create it first.")
+            # Fallback to original template if back-only doesn't exist
+            template_path = Path(__file__).parent / 'label_template.html'
+            if template_path.exists():
+                with open(template_path, 'r', encoding='utf-8') as f:
+                    return Template(f.read())
+            else:
+                raise FileNotFoundError("label_template_back_only.html not found. Please create it first.")
 
 
 def main():

@@ -1,0 +1,57 @@
+{
+  "product_name": "Mixed Garden Vegetables",
+  "category": "frozen_food",
+  "brand_name": "FrostFresh",
+  "product_description": "Premium Frozen Vegetable Mix",
+  "net_quantity": {
+    "value": 750,
+    "unit": "g"
+  },
+  "ingredients": [
+    {
+      "name": "Green Peas",
+      "percentage": 30
+    },
+    {
+      "name": "Carrots",
+      "percentage": 25
+    },
+    {
+      "name": "Green Beans",
+      "percentage": 20
+    },
+    {
+      "name": "Sweetcorn",
+      "percentage": 15
+    },
+    {
+      "name": "Broccoli",
+      "percentage": 10
+    }
+  ],
+  "allergens": [],
+  "nutrition_per_100g": {
+    "energy_kj": 280,
+    "energy_kcal": 67,
+    "fat": 0.5,
+    "saturates": 0.1,
+    "carbohydrate": 10,
+    "sugars": 4,
+    "fibre": 4,
+    "protein": 4,
+    "salt": 0.02
+  },
+  "date_type": "best_before",
+  "best_before": "31/12/2027",
+  "lot_number": "FZ2026015",
+  "storage_conditions": "Keep frozen at -18°C or below. Do not refreeze once thawed",
+  "frozen_date": "15/01/2026",
+  "defrosting_instructions": "Cook from frozen. Do not thaw before cooking",
+  "business_operator": {
+    "name": "FrostFresh BV",
+    "address": "Industrieweg 78, 1234 AB Amsterdam, Netherlands",
+    "phone": "+31 20 1234567"
+  },
+  "country_of_origin": "Netherlands",
+  "ean_code": "8 710123 456789"
+}

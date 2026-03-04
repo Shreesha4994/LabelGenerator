@@ -1,0 +1,61 @@
+{
+  "product_name": "Vitamin D3 1000 IU",
+  "category": "food_supplement",
+  "brand_name": "VitaPlus",
+  "product_description": "High Strength Vitamin D3 Capsules",
+  "net_quantity": {
+    "value": 60,
+    "unit": "g"
+  },
+  "serving_size": "1 capsule",
+  "servings_per_container": 90,
+  "ingredients": [
+    {
+      "name": "Sunflower Oil"
+    },
+    {
+      "name": "Gelatin (Bovine)",
+      "is_allergen": false
+    },
+    {
+      "name": "Glycerol"
+    },
+    {
+      "name": "Cholecalciferol (Vitamin D3)"
+    },
+    {
+      "name": "Antioxidant",
+      "e_number": "E306",
+      "functional_class": "Antioxidant"
+    }
+  ],
+  "allergens": [],
+  "nutrition_per_100g": {
+    "energy_kj": 2500,
+    "energy_kcal": 600,
+    "fat": 65,
+    "saturates": 8,
+    "carbohydrate": 5,
+    "sugars": 0,
+    "protein": 10,
+    "salt": 0
+  },
+  "supplement_facts": {
+    "vitamin_d3": {
+      "amount": "25μg (1000 IU)",
+      "nrv": "500%"
+    }
+  },
+  "date_type": "best_before",
+  "best_before": "31/12/2027",
+  "lot_number": "VS2026033",
+  "storage_conditions": "Store in a cool, dry place below 25°C. Keep out of reach of children",
+  "warnings": "Do not exceed the recommended daily dose. Food supplements should not be used as a substitute for a varied diet.",
+  "business_operator": {
+    "name": "VitaPlus Supplements Ltd",
+    "address": "Health Park 12, London SW1A 1AA, United Kingdom",
+    "phone": "+44 20 12345678"
+  },
+  "country_of_origin": "United Kingdom",
+  "ean_code": "5 012345 678901"
+}

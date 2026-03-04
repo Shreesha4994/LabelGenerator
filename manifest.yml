@@ -1,12 +1,12 @@
 ---
 applications:
 - name: label-generator-api
-  memory: 212M
-  disk_quota: 512M
+  memory: 512M
+  disk_quota: 1G
   instances: 1
   buildpacks:
     - python_buildpack
-  command: gunicorn -w 4 -b 0.0.0.0:$PORT --timeout 60 app:app
+  command: gunicorn -w 2 -b 0.0.0.0:$PORT --timeout 120 app:app
   health-check-type: http
   health-check-http-endpoint: /api/health
   env:
@@ -14,5 +14,17 @@ applications:
     FLASK_DEBUG: false
     CORS_ORIGINS: "*"
     MAX_CONTENT_LENGTH: "16777216"
+    # SAP AI Core credentials (AICORE_ prefix required by gen-ai-hub SDK)
+    AICORE_AUTH_URL: "https://test-nbhfe3tt.authentication.eu11.hana.ondemand.com"
+    AICORE_BASE_URL: "https://api.ai.prodeuonly.eu-central-1.aws.ml.hana.ondemand.com"
+    AICORE_CLIENT_ID: "sb-75bd46da-4c8b-4502-bc5b-4e445478736e!b14569|aicore!b18"
+    AICORE_CLIENT_SECRET: "5a9ef2f2-6e67-491a-8dda-7afa478d2adb$CmvHULYDzU2deKTMJIuNsvoifiB-ng7ZvMcqGWxiZC0="
+    AICORE_RESOURCE_GROUP: "default"
+    SAP_AI_CORE_DEPLOYMENT_ID: "d72f8edef8d53299"
+    # SAP Translation Hub credentials (for label translation)
+    TRANSLATION_HUB_CLIENT_ID: "sb-4c7fd105-8928-41e0-837c-10763f2be6bc!b14569|sap-translation-hub-eu11!b999"
+    TRANSLATION_HUB_CLIENT_SECRET: "e0cfe629-7418-4383-82fa-5c2c048b268c$uhPSnGG2PnUXvWapECIkhPh3HNp203-9eobZLiFVvXY="
+    TRANSLATION_HUB_AUTH_URL: "https://test-nbhfe3tt.authentication.eu11.hana.ondemand.com"
+    TRANSLATION_HUB_API_URL: "https://document-translation.api.eu11.translationhub.cloud.sap"
   routes:
-    - route: label-generator-api.cfapps.eu11.hana.ondemand.com
+    - route: label-generator-api-happy-hartebeest-ok.cfapps.eu11.hana.ondemand.com

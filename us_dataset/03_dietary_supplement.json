@@ -1,0 +1,61 @@
+{
+  "product_name": "Vitamin D3 + K2",
+  "category": "dietary_supplement",
+  "net_quantity": {
+    "us_value": 60,
+    "us_unit": "capsules",
+    "metric_value": 60,
+    "metric_unit": "capsules"
+  },
+  "ingredients": [
+    "Vitamin D3 (as Cholecalciferol)",
+    "Vitamin K2 (as Menaquinone-7)",
+    "Olive Oil",
+    "Gelatin Capsule"
+  ],
+  "allergens": [],
+  "supplement_facts": {
+    "serving_size": "1 Softgel",
+    "servings_per_container": 60,
+    "ingredients": [
+      {
+        "name": "Vitamin D3 (as Cholecalciferol)",
+        "amount": "125 mcg (5,000 IU)",
+        "dv": 625
+      },
+      {
+        "name": "Vitamin K2 (as MK-7)",
+        "amount": "100 mcg",
+        "dv": 83
+      }
+    ],
+    "other_ingredients": [
+      "Extra Virgin Olive Oil",
+      "Softgel Capsule (Gelatin, Glycerin, Purified Water)"
+    ]
+  },
+  "manufacturer": {
+    "name": "NutriHealth Labs Inc.",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "zip": "84101",
+    "phone": "1-800-555-VITA",
+    "website": "www.nutrihealthlabs.com"
+  },
+  "suggested_use": "Take 1 softgel daily with a meal, or as directed by your healthcare professional.",
+  "warnings": [
+    "Consult your physician before using this product if you are pregnant, nursing, taking medication, or have a medical condition.",
+    "Keep out of reach of children.",
+    "Store in a cool, dry place."
+  ],
+  "fda_disclaimer": true,
+  "best_before": "02/2028",
+  "lot_code": "VDK2-2026-0218",
+  "upc_code": "0 55555 12345 6",
+  "brand_name": "NUTRIHEALTH",
+  "brand_tagline": "Science-Based Nutrition",
+  "product_description": "High Potency Vitamin D3 + K2",
+  "product_variant": "5,000 IU D3 + 100 mcg K2",
+  "product_type": "DIETARY SUPPLEMENT",
+  "product_emoji": "💊"
+}
